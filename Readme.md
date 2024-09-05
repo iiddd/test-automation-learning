@@ -8,5 +8,4 @@
 - Setup as Maven project
 
 ## Contributors:
-
 - ElKordel
