@@ -9,6 +9,4 @@
 
 ## Contributors:
 - ElKordel
-
-## Contributors:
 - ELPaniqer
