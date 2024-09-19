@@ -10,3 +10,4 @@
 ## Contributors:
 - ElKordel
 - ElPaniqer
+- ElManuya
