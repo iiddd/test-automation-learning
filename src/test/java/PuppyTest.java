@@ -9,11 +9,11 @@ public class PuppyTest extends BaseTest {
     private static final String PASSWORD = "password";
 
     @Test
-    public void test3() {
+    public void loginTest() {
         puppySearchPage
                 .openPuppyPage()
                 .enterUsername(USERNAME)
                 .enterPassword(PASSWORD)
-                .logIn();
+                .login();
     }
 }

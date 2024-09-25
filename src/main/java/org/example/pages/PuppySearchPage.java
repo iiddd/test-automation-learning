@@ -6,10 +6,10 @@ import static org.example.core.DriverHolder.getDriver;
 
 public class PuppySearchPage {
 
-    public static final String PUPPY_URL = "http://localhost:8000/";
-    public static final By ENTER_USERNAME = By.xpath("//input[@placeholder='Username']");
-    public static final By ENTER_PASSWORD = By.xpath("//input[@placeholder='Password']");
-    public static final By LOGIN = By.xpath("//input[@value='Log in']");
+    private static final String PUPPY_URL = "http://localhost:8000/";
+    private static final By ENTER_USERNAME = By.xpath("//input[@placeholder='Username']");
+    private static final By ENTER_PASSWORD = By.xpath("//input[@placeholder='Password']");
+    private static final By LOGIN = By.xpath("//input[@value='Log in']");
 
     public PuppySearchPage openPuppyPage() {
         getDriver().get(PUPPY_URL);
@@ -26,7 +26,7 @@ public class PuppySearchPage {
         return this;
     }
 
-    public PuppySearchPage logIn() {
+    public PuppySearchPage login() {
         getDriver().findElement(LOGIN);
         return this;
     }
