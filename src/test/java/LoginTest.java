@@ -1,10 +1,9 @@
-
-import org.example.pages.PuppySearchPage;
+import org.example.pages.LoginPage;
 import org.junit.jupiter.api.Test;
 
 
-public class PuppyTest extends BaseTest {
-    private final PuppySearchPage puppySearchPage = new PuppySearchPage();
+public class LoginTest extends BaseTest {
+    private final LoginPage puppySearchPage = new LoginPage();
     private static final String USERNAME = "admin";
     private static final String PASSWORD = "password";
 

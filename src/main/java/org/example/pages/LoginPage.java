@@ -4,29 +4,29 @@ import org.openqa.selenium.By;
 
 import static org.example.core.DriverHolder.getDriver;
 
-public class PuppySearchPage {
+public class LoginPage {
 
     private static final String PUPPY_URL = "http://localhost:8000/";
     private static final By ENTER_USERNAME = By.xpath("//input[@placeholder='Username']");
     private static final By ENTER_PASSWORD = By.xpath("//input[@placeholder='Password']");
     private static final By LOGIN = By.xpath("//input[@value='Log in']");
 
-    public PuppySearchPage openPuppyPage() {
+    public LoginPage openPuppyPage() {
         getDriver().get(PUPPY_URL);
         return this;
     }
 
-    public PuppySearchPage enterUsername(String input) {
+    public LoginPage enterUsername(String input) {
         getDriver().findElement(ENTER_USERNAME).sendKeys(input);
         return this;
     }
 
-    public PuppySearchPage enterPassword(String input) {
+    public LoginPage enterPassword(String input) {
         getDriver().findElement(ENTER_PASSWORD).sendKeys(input);
         return this;
     }
 
-    public PuppySearchPage login() {
+    public LoginPage login() {
         getDriver().findElement(LOGIN);
         return this;
     }
