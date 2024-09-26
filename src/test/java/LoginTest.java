@@ -10,7 +10,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginTest() {
         loginPage
-                .openPuppyPage()
+                .navigateToPuppyPage()
                 .enterUsername(USERNAME)
                 .enterPassword(PASSWORD)
                 .clickLoginButton();

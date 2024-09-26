@@ -11,7 +11,7 @@ public class LoginPage {
     private static final By PASSWORD_INPUT_LOCATOR = By.xpath("//input[@placeholder='Password']");
     private static final By LOGIN_BUTTON_LOCATOR = By.xpath("//input[@value='Log in']");
 
-    public LoginPage openPuppyPage() {
+    public LoginPage navigateToPuppyPage() {
         getDriver().get(PUPPY_URL);
         return this;
     }
