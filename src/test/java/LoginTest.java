@@ -1,9 +1,11 @@
+import org.example.pages.DashboardPage;
 import org.example.pages.LoginPage;
 import org.junit.jupiter.api.Test;
 
 
 public class LoginTest extends BaseTest {
     private final LoginPage loginPage = new LoginPage();
+    private final DashboardPage dashboardPage = new DashboardPage();
     private static final String USERNAME = "admin";
     private static final String PASSWORD = "password";
 
@@ -14,5 +16,7 @@ public class LoginTest extends BaseTest {
                 .enterUsername(USERNAME)
                 .enterPassword(PASSWORD)
                 .clickLoginButton();
+        dashboardPage
+                .checkDashboardIsDisplayed();
     }
 }
