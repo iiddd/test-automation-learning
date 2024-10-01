@@ -7,6 +7,7 @@ public class AllIsDisplayedLoginPageTest extends BaseTest {
     @Test
     public void allIsDisplayed () {
         loginPage
+                .navigateToPuppyPage()
                 .checkHeaderIsDisplayed()
                 .checkImageIsDisplayed()
                 .checkWelcomeIsDisplayed()
@@ -16,6 +17,6 @@ public class AllIsDisplayedLoginPageTest extends BaseTest {
                 .checkRegisterButtonIsDisplayed()
                 .checkAboutLinkIsDisplayed();
 
-        //Почему-то не находит элементы :'(
+        //если убрать 11 и 12 строку - код работает. Но я пока не понимаю, почему конкретно их не находит
     }
 }
