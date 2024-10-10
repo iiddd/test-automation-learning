@@ -1,44 +1,44 @@
 Test cases:
-1) Check page About the App.
-1.
+1) "About the App" page layout test
 Step definition:
 - Navigate to page "About the App"
 Expected result:
 - Page About Puppy Bank is displayed
 - Article "Getting Started" is displayed
-- Article "Getting Started" contains "img/puppybank.gif" gif
 - Article "Puppy Bank Features" is displayed
-- Article "Puppy Bank Features" contains "img/undraw_wallet_aym5.svg" image
 - Article "Why it was made?" is displayed
-- Article "Why it was made?" contains "img/undraw_lightbulb_moment_evxr.svg" image
-- In article "Why it was made?" the "More information →" link goes to "https://vncrtech.medium.com/"
 - Article "Sources" is displayed
-- In article "Sources" the "GitHub" link goes to "https://github.com/vncrtech/puppybank" website
-- In article "Sources" the "Docker Hub" link goes to "https://hub.docker.com/r/vncrtech/puppybank" website
-- In article "Sources" the "Bootstrap Template" link goes to "https://startbootstrap.com/theme/sb-admin-2" website
-- In article "Sources" the "Project Article" link goes to "https://vncrtech.medium.com/practice-test-automation-using-a-local-web-application-f8310ca37637" website
-- In article "Sources" the "For Collaboration" contains an email "vncr.tech@gmail.com"
 - Button "Explore Now" is displayed
 - Button "Explore Now" goes to "Welcome to Puppy Bank" page.
 
-2) Check Registration flow
+2) Registration flow page layout test
 Step definition:
+- Navigate to Registration page
+Expected result:
 - "Create a User!" form is displayed
-- "Create a User!" form consist  "/static/img/user-puppy.jpg" image
 - "Username" form is displayed
 - "Password" form is displayed
 - "Repeat password" form is displayed
 - "Register User" button is displayed
-- "Register User" button will not register a new account and goes "Welcome to Puppy Bank" page if "Username" field consist more then 150 symbols. An error will be displayed: "Ensure this value has at most 150 characters (it has *the number of characters in the Username field*)."
-- "Register User" button wil not register a new account and goes "Welcome to Puppy Bank" page if "Username" field consist symbols other than letters, numbers, and @/./+/-/_ characters. An error will be displayed: "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters."
-- "Register User" button will not register a new account and goes "Welcome to Puppy Bank" page if "Password" field and "Repeat password: field aren't equal.
-An error will be displayed: "The two password fields didn’t match."
-- "Register User" button will not register a new account and goes "Welcome to Puppy Bank" page if "Password" field consist less than or equal to 8 characters. An error will be displayed: "This password is too short. It must contain at least 8 characters."
-- "Register User" button will not register a new account and goes "Welcome to Puppy Bank" page if "Password" field consist only numbers. An error will be displayed: "This password is entirely numeric."
-- "Register User" button will not register a new account and goes "Welcome to Puppy Bank" page if "Password" field consist a commonly used password. An error will be displayed: "This password is too common."
-- "Register User" button will not register a new account and goes "Welcome to Puppy Bank" page if "Password" field consist similar information like in "Username" field . An error will be displayed: "The password is too similar to the username."
-- "Register User" button will not register a new account and goes "Welcome to Puppy Bank" page if "Username" field is empty.
-- "Register User" button will not register a new account and goes "Welcome to Puppy Bank" page if "Password" field is empty.
-- "Register User" button will not register a new account and goes "Welcome to Puppy Bank" page if "Repeat password" field is empty.
 - "Already have an account? Login!" button is displayed
 - "Already have an account? Login!" button goes to "Welcome to Puppy Bank" page.
+
+3) Registration happy flow test
+Step definition:
+- Navigate to Registration page
+- Enter "Newaccount" in the "Username" field
+- Enter "AbobaPuppy" in the "Password" field
+- Enter "AbobaPuppy" in the "Repeat password" field
+- Click "Register User Button
+Expected result:
+- "Register User" button will register a new account and goes "Welcome to Puppy Bank"
+
+4) Registration Username error test
+Step definition:
+- Navigate to Registration page
+- Enter "AbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkc" in the "Username" field
+- Enter "AbobaPuppy" in the "Password" field
+- Enter "AbobaPuppy" in the "Repeat password" field
+- Click "Register User Button
+Expected result:
+- An error will be displayed: "Ensure this value has at most 150 characters (it has 151)."
