@@ -1,1 +1,44 @@
 Test cases:
+1) "About the App" page layout test
+Step definition:
+- Navigate to page "About the App"
+Expected result:
+- Page About Puppy Bank is displayed
+- Article "Getting Started" is displayed
+- Article "Puppy Bank Features" is displayed
+- Article "Why it was made?" is displayed
+- Article "Sources" is displayed
+- Button "Explore Now" is displayed
+- Button "Explore Now" goes to "Welcome to Puppy Bank" page.
+
+2) Registration flow page layout test
+Step definition:
+- Navigate to Registration page
+Expected result:
+- "Create a User!" form is displayed
+- "Username" form is displayed
+- "Password" form is displayed
+- "Repeat password" form is displayed
+- "Register User" button is displayed
+- "Already have an account? Login!" button is displayed
+- "Already have an account? Login!" button goes to "Welcome to Puppy Bank" page.
+
+3) Registration happy flow test
+Step definition:
+- Navigate to Registration page
+- Enter "Newaccount" in the "Username" field
+- Enter "AbobaPuppy" in the "Password" field
+- Enter "AbobaPuppy" in the "Repeat password" field
+- Click "Register User Button
+Expected result:
+- "Register User" button will register a new account and goes "Welcome to Puppy Bank"
+
+4) Registration Username error test
+Step definition:
+- Navigate to Registration page
+- Enter "AbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkc" in the "Username" field
+- Enter "AbobaPuppy" in the "Password" field
+- Enter "AbobaPuppy" in the "Repeat password" field
+- Click "Register User Button
+Expected result:
+- An error will be displayed: "Ensure this value has at most 150 characters (it has 151)."
