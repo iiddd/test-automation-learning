@@ -1,5 +1,6 @@
 Test cases:
-1) "About the App" page layout test
+
+1) "About the App" - page layout test
 Step definition:
 - Navigate to page "About the App"
 Expected result:
@@ -11,7 +12,7 @@ Expected result:
 - Button "Explore Now" is displayed
 - Button "Explore Now" goes to "Welcome to Puppy Bank" page.
 
-2) Registration flow page layout test
+2) Registration - Flow page layout test
 Step definition:
 - Navigate to Registration page
 Expected result:
@@ -23,22 +24,98 @@ Expected result:
 - "Already have an account? Login!" button is displayed
 - "Already have an account? Login!" button goes to "Welcome to Puppy Bank" page.
 
-3) Registration happy flow test
+3) Registration - Happy flow test
 Step definition:
 - Navigate to Registration page
 - Enter "Newaccount" in the "Username" field
 - Enter "AbobaPuppy" in the "Password" field
 - Enter "AbobaPuppy" in the "Repeat password" field
-- Click "Register User Button
+- Click "Register User" Button
 Expected result:
 - "Register User" button will register a new account and goes "Welcome to Puppy Bank"
 
-4) Registration Username error test
+4) Registration - Username Over 150 Characters
 Step definition:
 - Navigate to Registration page
 - Enter "AbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkc" in the "Username" field
 - Enter "AbobaPuppy" in the "Password" field
 - Enter "AbobaPuppy" in the "Repeat password" field
-- Click "Register User Button
+- Click "Register User" Button
 Expected result:
 - An error will be displayed: "Ensure this value has at most 150 characters (it has 151)."
+
+5) Registration - Username сharacters other than letters, digits and @/./+/-/_
+Step definition:
+- Navigate to Registration page
+- Enter "Newacconut*?2" in the "Username" field
+- Enter "AbobaPuppy" in the "Password" field
+- Enter "AbobaPuppy" in the "Repeat password" field
+- Click "Register User" Button
+Expected result:
+- An error will be displayed: "Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters."
+
+6) Registration - Password field is different from the repeat password field
+Step definition:
+- Navigate to Registration page
+- Enter "Newacconut3" in the "Username" field
+- Enter "AbobaPuppy" in the "Password" field
+- Enter "AbobaPoppy" in the "Repeat password" field
+- Click "Register User" Button
+Expected result:
+- An error will be displayed: "The two password fields didn’t match."
+
+7) Registration - Password is less than 8 characters
+Step definition:
+- Navigate to Registration page
+- Enter "Newacconut4" in the "Username" field
+- Enter "Aboba" in the "Password" field
+- Enter "Aboba" in the "Repeat password" field
+- Click "Register User" Button
+Expected result:
+- An error will be displayed: "This password is too short. It must contain at least 8 characters."
+
+8) Registration - Password is only digits
+Step definition:
+- Navigate to Registration page
+- Enter "Newacconut5" in the "Username" field
+- Enter "36905471" in the "Password" field
+- Enter "36905471" in the "Repeat password" field
+- Click "Register User" Button
+Expected result:
+- An error will be displayed: "This password is entirely numeric."
+
+9) Registration - Username and Password fields are similar
+Step definition:
+- Navigate to Registration page
+- Enter "Newacconut656" in the "Username" field
+- Enter "Newacconut6" in the "Password" field
+- Enter "Newacconut6" in the "Repeat password" field
+- Click "Register User" Button
+Expected result:
+- An error will be displayed: "The password is too similar to the username."
+
+10) Registration - Username is empty
+Step definition:
+- Navigate to Registration page
+- Enter "AbobaPuppy" in the "Password" field
+- Enter "AbobaPuppy" in the "Repeat password" field
+- Click "Register User" Button
+Expected result:
+- Cursor will be placed on the Username field and a warning about the missing field will be displayed
+
+11) Registration - Password is empty
+Step definition:
+- Navigate to Registration page
+- Enter "Newaccount7" in the "Username" field
+- Click "Register User" Button
+Expected result:
+- Cursor will be placed on the Password field and a warning about the missing field will be displayed
+
+12) Registration - Repeat password is empty
+Step definition:
+- Navigate to Registration page
+- Enter "Newaccount8" in the "Username" field
+- Enter "AbobaPuppy" in the "Password" field
+- Click "Register User" Button
+Expected result:
+- Cursor will be placed on the Repeat password field and a warning about the missing field will be displayed
