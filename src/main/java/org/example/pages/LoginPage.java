@@ -1,5 +1,6 @@
 package org.example.pages;
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 
 import static org.example.core.DriverHolder.getDriver;
@@ -7,6 +8,7 @@ import static org.example.core.DriverHolder.getDriver;
 public class LoginPage {
 
     private static final String PUPPY_URL = "http://localhost:8000/";
+    private static final By LOGIN_PAGE_TITLE_LOCATOR = By.xpath("//h1[text()='Welcome to Puppy Bank']");
     private static final By USERNAME_INPUT_LOCATOR = By.xpath("//input[@placeholder='Username']");
     private static final By PASSWORD_INPUT_LOCATOR = By.xpath("//input[@placeholder='Password']");
     private static final By LOGIN_BUTTON_LOCATOR = By.xpath("//input[@value='Log in']");
@@ -16,13 +18,28 @@ public class LoginPage {
         return this;
     }
 
+    public LoginPage checkLoginPageTitleIsDisplayed() {
+        Assertions.assertTrue(getDriver().findElement(LOGIN_PAGE_TITLE_LOCATOR).isDisplayed());
+        return this;
+    }
+
     public LoginPage enterUsername(String input) {
         getDriver().findElement(USERNAME_INPUT_LOCATOR).sendKeys(input);
         return this;
     }
 
+    public LoginPage clearUsername() {
+        getDriver().findElement(USERNAME_INPUT_LOCATOR).clear();
+        return this;
+    }
+
     public LoginPage enterPassword(String input) {
         getDriver().findElement(PASSWORD_INPUT_LOCATOR).sendKeys(input);
+        return this;
+    }
+
+    public LoginPage clearPassword() {
+        getDriver().findElement(PASSWORD_INPUT_LOCATOR).clear();
         return this;
     }
 
