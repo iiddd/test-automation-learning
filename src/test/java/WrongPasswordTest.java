@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 public class WrongPasswordTest extends BaseTest {
     private final LoginPage loginPage = new LoginPage();
     private static final String USERNAME = "admin";
-    private static final String PASSWORD = "cat";
+    private static final int RANDOM_PASSWORD_LENGHT = 6;
 
 
     @Test
@@ -12,7 +12,7 @@ public class WrongPasswordTest extends BaseTest {
         loginPage
                 .navigateToPuppyPage()
                 .enterUsername(USERNAME)
-                .enterPassword(PASSWORD)
+                .enterRandomPassword(RANDOM_PASSWORD_LENGHT)
                 .clickLoginButton()
                 .checkErrorMessageIsDisplayed();
 

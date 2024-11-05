@@ -3,16 +3,15 @@ import org.junit.jupiter.api.Test;
 
 public class WrongCredentialsTest extends BaseTest{
     private final LoginPage loginPage = new LoginPage();
-    private static final String USERNAME = "kitty";
-    private static final String PASSWORD = "cat";
+    private static final int RANDOM_CREDENTIALS_LENGHT = 6;
 
 
     @Test
     public void wrongCredentialsTest () {
         loginPage
                 .navigateToPuppyPage()
-                .enterUsername(USERNAME)
-                .enterPassword(PASSWORD)
+                .enterRandomUsername(RANDOM_CREDENTIALS_LENGHT)
+                .enterRandomPassword(RANDOM_CREDENTIALS_LENGHT)
                 .clickLoginButton()
                 .checkErrorMessageIsDisplayed();
 
