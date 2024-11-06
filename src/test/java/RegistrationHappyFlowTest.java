@@ -1,3 +1,4 @@
+import org.example.pages.DashboardPage;
 import org.example.pages.LoginPage;
 import org.example.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
@@ -6,7 +7,8 @@ public class RegistrationHappyFlowTest extends BaseTest {
 
     private final RegistrationPage registrationPage = new RegistrationPage();
     private final LoginPage loginPage = new LoginPage();
-    private static final String USERNAME = "Newaccount";
+    private final DashboardPage dashboardPage = new DashboardPage();
+    private static final String USERNAME = "Testaccount5";
     private static final String PASSWORD = "AbobaPuppy";
 
     @Test
@@ -18,7 +20,10 @@ public class RegistrationHappyFlowTest extends BaseTest {
                 .enterRepeatPassword(PASSWORD)
                 .clickRegistrationButton();
         loginPage
-                .checkLoginPageTitleIsDisplayed();
+                .loginTestAccount();
+        dashboardPage
+                .checkDashboardIsDisplayed();
+        loginPage
+                .deleteTestAccount();
     }
-
 }

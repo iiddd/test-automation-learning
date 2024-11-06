@@ -47,4 +47,20 @@ public class LoginPage {
         getDriver().findElement(LOGIN_BUTTON_LOCATOR).click();
         return this;
     }
+
+    public LoginPage loginTestAccount() {
+        getDriver().findElement(USERNAME_INPUT_LOCATOR).sendKeys("Testaccount5");
+        getDriver().findElement(PASSWORD_INPUT_LOCATOR).sendKeys("AbobaPuppy");
+        getDriver().findElement(LOGIN_BUTTON_LOCATOR).click();
+        return this;
+    }
+
+    public LoginPage deleteTestAccount() {
+        getDriver().findElement(By.xpath("//a[@data-target='#collapseUsers']")).click();
+        getDriver().findElement(By.xpath("//a[text()='System User List']")).click();
+        getDriver().findElement(By.xpath("//a[text()='Testaccount5']")).click();
+        getDriver().findElement(By.xpath("//div[@data-target='#deleteModal']")).click();
+        getDriver().findElement(By.xpath("//button[@name='delete_object']")).click();
+        return this;
+    }
 }
