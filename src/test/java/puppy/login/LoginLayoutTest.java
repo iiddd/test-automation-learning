@@ -1,5 +1,8 @@
+package puppy.login;
+
 import org.example.pages.LoginPage;
 import org.junit.jupiter.api.Test;
+import puppy.base.BaseTest;
 
 
 public class LoginLayoutTest extends BaseTest {

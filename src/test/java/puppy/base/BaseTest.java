@@ -1,3 +1,5 @@
+package puppy.base;
+
 import org.example.core.DriverHolder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

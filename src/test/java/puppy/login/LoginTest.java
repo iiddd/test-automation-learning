@@ -1,6 +1,9 @@
+package puppy.login;
+
 import org.example.pages.DashboardPage;
 import org.example.pages.LoginPage;
 import org.junit.jupiter.api.Test;
+import puppy.base.BaseTest;
 
 
 public class LoginTest extends BaseTest {
