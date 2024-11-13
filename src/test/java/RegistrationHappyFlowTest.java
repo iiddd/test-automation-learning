@@ -20,7 +20,7 @@ public class RegistrationHappyFlowTest extends BaseTest {
                 .enterRepeatPassword(PASSWORD)
                 .clickRegistrationButton();
         loginPage
-                .loginTestAccount();
+                .loginWithTestAccount();
         dashboardPage
                 .checkDashboardIsDisplayed();
         loginPage
