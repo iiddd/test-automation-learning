@@ -10,10 +10,6 @@ public class LoginLayoutTest extends BaseTest {
     public void loginLayout() {
         loginPage
                 .navigateToPuppyPage()
-                .checkLoginPageTitleIsDisplayed()
-                .checkCredentialsFieldIsDisplayed()
-                .checkCredentialsFieldIsEmpty()
-                .checkButtonsIsDisplayed()
-                .checkAboutLinkIsDisplayed();
+                .checkLayout();
     }
 }

@@ -102,6 +102,17 @@ public class LoginPage {
     }
 
     public LoginPage checkLoginButtonIsDisplayed() {
+    public LoginPage checkUsernameFieldIsEmpty() {
+        Assertions.assertTrue(getDriver().findElement(USERNAME_INPUT_LOCATOR).getText().isEmpty());
+        return this;
+    }
+
+    public LoginPage checkPasswordFieldIsEmpty() {
+        Assertions.assertTrue(getDriver().findElement(PASSWORD_INPUT_LOCATOR).getText().isEmpty());
+        return this;
+    }
+
+    public LoginPage checkLoginButtonIsDisplayed() {
         Assertions.assertTrue(getDriver().findElement(LOGIN_BUTTON_LOCATOR).isDisplayed());
         return this;
     }
@@ -129,6 +140,18 @@ public class LoginPage {
         getDriver().findElement(TEST_ACCOUNT_PROFILE_LOCATOR).click();
         getDriver().findElement(DELETE_BUTTON_LOCATOR).click();
         getDriver().findElement(ACCEPT_DELETE_BUTTON_LOCATOR).click();
+        return this;
+    }
+
+    public LoginPage checkLayout() {
+        checkLoginPageTitleIsDisplayed();
+        checkPasswordFieldIsDisplayed();
+        checkUsernameFieldIsDisplayed();
+        checkUsernameFieldIsEmpty();
+        checkPasswordFieldIsEmpty();
+        checkLoginButtonIsDisplayed();
+        checkRegisterButtonIsDisplayed();
+        checkAboutLinkIsDisplayed();
         return this;
     }
 }
