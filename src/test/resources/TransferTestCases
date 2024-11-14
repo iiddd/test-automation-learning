@@ -1,0 +1,57 @@
+1) Creating a new transfer
+Step definition:
+- Navigate to «Dashboard» page
+- Click «Transfer» button
+- Click «Transfer Transaction List» button
+- Navigate to «Transfer Transaction List» page
+- Click «Create New» button
+- Navigate to «Transfer Transaction» page
+- Enter «1» in the line «Transfer amount»
+- Click «From puppy» button and choose «Poodle White»
+- Click «To puppy» button and choose «Poodle White»
+- Click «Confirm» button
+Expected result:
+- Navigate to «Transfer Transaction List» page
+
+2) Entering the transfer amount incorrectly
+Step definition:
+- Navigate to «Dashboard» page
+- Click «Transfer» button
+- Click «Transfer Transaction List» button
+- Navigate to «Transfer Transaction List» page
+- Click «Create New» button
+- Navigate to «Transfer Transaction» page
+- Enter «-1» in the line «Transfer amount»
+- Click «From puppy» button and choose «Poodle White»
+- Click «To puppy» button and choose «Poodle White»
+- Click «Confirm» button
+Expected result:
+- Navigate to «Transfer Transaction List» page and get an error «The transfer amount should be more than zero»
+
+3) Creating a new transfer from the «Dashboard» page
+Step definition:
+- Navigate to «Dashboard» page
+- Click «Transfer» button
+- Click «New Transfer» button
+- Navigate to «Transfer Transaction» page
+- Enter «3» in the line «Transfer amount»
+- Click «From puppy» button and choose « Siberian Husky »
+- Click «To puppy» button and choose « Siberian Husky »
+- Click «Confirm» button
+Expected result:
+- Navigate to «Transfer Transaction List» page
+
+4) Exceeding the transfer amount
+Step definition:
+- Navigate to «Dashboard» page
+- Click «Transfer» button
+- Click «Transfer Transaction List» button
+- Navigate to «Transfer Transaction List» page
+- Click «Create New» button
+- Navigate to «Transfer Transaction» page
+- Enter «999999999999999999999999999999999999999999999999999999999» in the line «Transfer amount»
+- Click «From puppy» button and choose «Poodle White»
+- Click «To puppy» button and choose «Poodle White»
+- Click «Confirm» button
+Expected result:
+- Navigate to «Transfer Transaction List» page and get an error «The transfer amount cannot be more than the account balance»
