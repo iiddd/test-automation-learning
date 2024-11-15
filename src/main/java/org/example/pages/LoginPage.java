@@ -16,18 +16,13 @@ public class LoginPage {
     private static final By LOGIN_PAGE_TITLE_LOCATOR = By.xpath("//h1[text()='Welcome to Puppy Bank']");
     private static final By REGISTER_BUTTON_LOCATOR = By.xpath("//a[contains(text(),'Register')]");
     private static final By ABOUT_LINK_LOCATOR = By.xpath("//a[contains(text(),'About the App')]");
-    private static final By HEADER_PUPPY_LOCATOR = By.xpath("//h4[@class='mr-2 d-none d-lg-inline text-primary']");
-    private static final By IMAGE_PUPPY_LOCATOR = By.xpath("//img[@class='col-lg-6 d-none d-lg-block']");
-    private static final By WELCOME_TITLE_LOCATOR = By.xpath("//h1[@class='h4 text-gray-900 mb-4']");
-    private static final By REGISTER_BUTTON_LOCATOR = By.xpath("//a[@href='/app_users/register']");
-    private static final By ABOUT_LINK_LOCATOR = By.xpath("//a[@href='/app_generic/about_outside']");
     private static final By SYSTEM_USERS_DROPDOWN_LOCATOR = By.xpath("//a[@data-target='#collapseUsers']");
     private static final By SYSTEM_USER_LIST_LOCATOR = By.xpath("//a[text()='System User List']");
     private static final By TEST_ACCOUNT_PROFILE_LOCATOR = By.xpath("//a[text()='Testaccount5']");
     private static final By DELETE_BUTTON_LOCATOR = By.xpath("//div[@data-target='#deleteModal']");
     private static final By ACCEPT_DELETE_BUTTON_LOCATOR = By.xpath("//button[@name='delete_object']");
 
-    public LoginPage LoginPuppy() {
+    public LoginPage loginAsAdmin() {
         getDriver().get(PUPPY_URL);
         getDriver().findElement(USERNAME_INPUT_LOCATOR).sendKeys("admin");
         getDriver().findElement(PASSWORD_INPUT_LOCATOR).sendKeys("password");
@@ -85,12 +80,6 @@ public class LoginPage {
         return this;
     }
 
-
-    public LoginPage checkLoginPageTitleIsDisplayed() {
-        Assertions.assertTrue(getDriver().findElement(LOGIN_PAGE_TITLE_LOCATOR).isDisplayed());
-        return this;
-    }
-
     public LoginPage checkUsernameFieldIsDisplayed() {
         Assertions.assertTrue(getDriver().findElement(USERNAME_INPUT_LOCATOR).isDisplayed());
         return this;
@@ -101,7 +90,6 @@ public class LoginPage {
         return this;
     }
 
-    public LoginPage checkLoginButtonIsDisplayed() {
     public LoginPage checkUsernameFieldIsEmpty() {
         Assertions.assertTrue(getDriver().findElement(USERNAME_INPUT_LOCATOR).getText().isEmpty());
         return this;

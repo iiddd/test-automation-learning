@@ -1,18 +1,20 @@
+package puppy.login;
+
 import org.example.pages.LoginPage;
 import org.junit.jupiter.api.Test;
+import puppy.base.BaseTest;
 
-public class EmptyPasswordTest extends BaseTest {
+public class EmptyLoginTest extends BaseTest {
+    private static final String PASSWORD = "password";
     private final LoginPage loginPage = new LoginPage();
-    private static final String USERNAME = "admin";
 
     @Test
-    public void emptyPasswordTest() {
+    public void emptyLoginTest() {
         loginPage
                 .navigateToPuppyPage()
-                .enterUsername(USERNAME)
-                .clearPassword()
+                .clearUsername()
+                .enterPassword(PASSWORD)
                 .clickLoginButton()
                 .checkLoginPageTitleIsDisplayed();
     }
-
 }

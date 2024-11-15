@@ -5,12 +5,11 @@ import org.junit.jupiter.api.Test;
 import puppy.base.BaseTest;
 
 public class WrongCredentialsTest extends BaseTest {
-    private final LoginPage loginPage = new LoginPage();
     private static final int RANDOM_CREDENTIALS_LENGHT = 6;
-
+    private final LoginPage loginPage = new LoginPage();
 
     @Test
-    public void wrongCredentialsTest () {
+    public void wrongCredentialsTest() {
         loginPage
                 .navigateToPuppyPage()
                 .enterRandomUsername(RANDOM_CREDENTIALS_LENGHT)
