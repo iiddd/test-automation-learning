@@ -16,11 +16,6 @@ public class LoginPage {
     private static final By LOGIN_PAGE_TITLE_LOCATOR = By.xpath("//h1[text()='Welcome to Puppy Bank']");
     private static final By REGISTER_BUTTON_LOCATOR = By.xpath("//a[contains(text(),'Register')]");
     private static final By ABOUT_LINK_LOCATOR = By.xpath("//a[contains(text(),'About the App')]");
-    private static final By SYSTEM_USERS_DROPDOWN_LOCATOR = By.xpath("//a[@data-target='#collapseUsers']");
-    private static final By SYSTEM_USER_LIST_LOCATOR = By.xpath("//a[text()='System User List']");
-    private static final By TEST_ACCOUNT_PROFILE_LOCATOR = By.xpath("//a[text()='Testaccount5']");
-    private static final By DELETE_BUTTON_LOCATOR = By.xpath("//div[@data-target='#deleteModal']");
-    private static final By ACCEPT_DELETE_BUTTON_LOCATOR = By.xpath("//button[@name='delete_object']");
 
     public LoginPage loginAsAdmin() {
         getDriver().get(PUPPY_URL);
@@ -119,15 +114,6 @@ public class LoginPage {
         getDriver().findElement(USERNAME_INPUT_LOCATOR).sendKeys("Testaccount5");
         getDriver().findElement(PASSWORD_INPUT_LOCATOR).sendKeys("AbobaPuppy");
         getDriver().findElement(LOGIN_BUTTON_LOCATOR).click();
-        return this;
-    }
-
-    public LoginPage deleteTestAccount() {
-        getDriver().findElement(SYSTEM_USERS_DROPDOWN_LOCATOR).click();
-        getDriver().findElement(SYSTEM_USER_LIST_LOCATOR).click();
-        getDriver().findElement(TEST_ACCOUNT_PROFILE_LOCATOR).click();
-        getDriver().findElement(DELETE_BUTTON_LOCATOR).click();
-        getDriver().findElement(ACCEPT_DELETE_BUTTON_LOCATOR).click();
         return this;
     }
 
