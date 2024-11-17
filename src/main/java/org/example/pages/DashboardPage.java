@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 
 import static org.example.core.DriverHolder.getDriver;
 
-public class DashboardPage {
+public class DashboardPage extends BasePage {
 
     private static final By DASHBOARD_TITLE_LOCATOR = By.xpath("//h1[text()='Dashboard']");
 

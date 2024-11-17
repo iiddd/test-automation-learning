@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 import static org.example.core.DriverHolder.getDriver;
 
-public class RegistrationPage {
+public class RegistrationPage extends BasePage {
 
     private static final String REGISTRATION_PAGE_URL = "http://localhost:8000/app_users/register";
     private static final By USERNAME_INPUT_LOCATOR = By.xpath("//input[@name='username']");
