@@ -11,7 +11,6 @@ public class RegistrationHappyFlowTest extends BaseTest {
     private final RegistrationPage registrationPage = new RegistrationPage();
     private final LoginPage loginPage = new LoginPage();
     private final DashboardPage dashboardPage = new DashboardPage();
-    private final BasePage basePage = new BasePage();
     private final SystemUserListPage systemUserListPage = new SystemUserListPage();
 
     @Test
@@ -25,8 +24,7 @@ public class RegistrationHappyFlowTest extends BaseTest {
         loginPage
                 .loginWithTestAccount();
         dashboardPage
-                .checkDashboardIsDisplayed();
-        basePage
+                .checkDashboardIsDisplayed()
                 .clickSystemUsersDropdown()
                 .goToSystemUserListPage();
         systemUserListPage
