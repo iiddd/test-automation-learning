@@ -1,0 +1,72 @@
+1. Withdraw transaction happy flow
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Automatic transition to the dashboard page occurs.
+Step definition:
+- Click "Withdraw" in the left menu bar.
+- Click "New Withdraw" in the drop-down menu.
+- Copy text in the "Transaction reference" field.
+- Select "1" in the "Withdraw amount" field.
+- Select option "Poodle White" in the "Puppy" field.
+- Click "Confirm" button.
+Expexted result:
+- Automatic transition to the page "Withdraw Transaction List".
+- New transaction with previously copied text in the "Transaction Reference" field.
+
+2. Withdraw transaction with empty fields
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Automatic transition to the dashboard page occurs.
+Step definition:
+- Click "Withdraw" in the left menu bar.
+- Click "New Withdraw" in the drop-down menu.
+- Check "Withdraw amount" field is empty.
+- Don't select option in the "Puppy" field.
+- Click "Confirm" button.
+Expexted result:
+- We stayed on the "Withdraw Transaction" page.
+
+3. Withdraw transaction with empty field "Withdraw amount"
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Automatic transition to the dashboard page occurs.
+Step definition:
+- Click "Withdraw" in the left menu bar.
+- Click "New Withdraw" in the drop-down menu.
+- Check "Withdraw amount" field is empty.
+- Select option "Poodle White" in the "Puppy" field.
+- Click "Confirm" button.
+Expexted result:
+- We stayed on the "Withdraw Transaction" page.
+
+4. Withdraw transaction with empty field "Puppy"
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Automatic transition to the dashboard page occurs.
+Step definition:
+- Click "Withdraw" in the left menu bar.
+- Click "New Withdraw" in the drop-down menu.
+- Select "1" in the "Withdraw amount" field.
+- Don't select option in the "Puppy" field.
+- Click "Confirm" button.
+Expexted result:
+- We stayed on the "Withdraw Transaction" page.
+
+5. Withdraw transaction with field "Withdraw amount" is "0"
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Automatic transition to the dashboard page occurs.
+Step definition:
+- Click "Withdraw" in the left menu bar.
+- Click "New Withdraw" in the drop-down menu.
+- Select "0" in the "Withdraw amount" field.
+- Select option "Poodle White" in the "Puppy" field.
+- Click "Confirm" button.
+Expexted result:
+- We stayed on the "Withdraw Transaction" page.
+- Error message "The withdraw amount should be more than zero" appeared.
