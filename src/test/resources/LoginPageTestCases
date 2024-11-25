@@ -1,0 +1,57 @@
+1. Login page test.
+
+1.Check page layout.
+Step definition:
+- Navigate to Puppy Bank login page.
+Expected result:
+- Header "For Test Automation Purposes Only" is displayed;
+- Login form is displayed;
+- Puppy image is dasplayed;
+- Header "Welcome to Puppy Bank" is displayed;
+- Username input field is displayed;
+- Password input field is displayed;
+- Username input field is empty;
+- Password input field is empty;
+- Login button is displayed;
+- Register button is displayed;
+- About the App link is displayed.
+
+2. Login happy flow.
+Pre-condition:
+- User is on Login page.
+Step definition:
+- Input "admin" into username input field;
+- Input "password" into password input field;
+- Click login button.
+Expected result:
+- Check user is on Dashboard page.
+
+3. Wrong credentials test
+Pre-condition:
+- User is on Login page.
+Step definition:
+- Enter any text except "admin" in the username input field;
+- Enter any text except "password" in the password input field;
+- Click login button.
+Expected result:
+- Check the error message "Please enter a correct username and password. Note that both fields may be case-sensitive" appears on the login page.
+
+4. Wrong login test
+Pre-condition:
+- User is on Login page.
+Step definition:
+- Enter any text except "admin" in the username input field;
+- Input "password" into password input field;
+- Click login button.
+Expected result:
+- Check the error message "Please enter a correct username and password. Note that both fields may be case-sensitive" appears on the login page.
+
+5. Wrong password test
+Pre-condition:
+- User is on Login page.
+Step definition:
+- Input "admin" into username input field;
+- Enter any text except "password" in the password input field;
+- Click login button.
+Expected result:
+- Check the error message "Please enter a correct username and password. Note that both fields may be case-sensitive" appears on the login page.
