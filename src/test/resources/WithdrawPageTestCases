@@ -2,12 +2,12 @@
 Pre-condition:
 - Navigate to Puppy Bank login page.
 - Login as admin.
-- Automatic transition to the dashboard page occurs.
+- Navigate to dashboard page.
 Step definition:
-- Click "Withdraw" in the left menu bar.
-- Click "New Withdraw" in the drop-down menu.
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
 - Copy text in the "Transaction reference" field.
-- Select "1" in the "Withdraw amount" field.
+- Enter "1" in the "Withdraw amount" field.
 - Select option "Poodle White" in the "Puppy" field.
 - Click "Confirm" button.
 Expexted result:
@@ -18,10 +18,10 @@ Expexted result:
 Pre-condition:
 - Navigate to Puppy Bank login page.
 - Login as admin.
-- Automatic transition to the dashboard page occurs.
+- Navigate to dashboard page.
 Step definition:
-- Click "Withdraw" in the left menu bar.
-- Click "New Withdraw" in the drop-down menu.
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
 - Check "Withdraw amount" field is empty.
 - Don't select option in the "Puppy" field.
 - Click "Confirm" button.
@@ -32,10 +32,10 @@ Expexted result:
 Pre-condition:
 - Navigate to Puppy Bank login page.
 - Login as admin.
-- Automatic transition to the dashboard page occurs.
+- Navigate to dashboard page.
 Step definition:
-- Click "Withdraw" in the left menu bar.
-- Click "New Withdraw" in the drop-down menu.
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
 - Check "Withdraw amount" field is empty.
 - Select option "Poodle White" in the "Puppy" field.
 - Click "Confirm" button.
@@ -46,11 +46,11 @@ Expexted result:
 Pre-condition:
 - Navigate to Puppy Bank login page.
 - Login as admin.
-- Automatic transition to the dashboard page occurs.
+- Navigate to dashboard page.
 Step definition:
-- Click "Withdraw" in the left menu bar.
-- Click "New Withdraw" in the drop-down menu.
-- Select "1" in the "Withdraw amount" field.
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+- Enter "1" in the "Withdraw amount" field.
 - Don't select option in the "Puppy" field.
 - Click "Confirm" button.
 Expexted result:
@@ -60,13 +60,31 @@ Expexted result:
 Pre-condition:
 - Navigate to Puppy Bank login page.
 - Login as admin.
-- Automatic transition to the dashboard page occurs.
+- Navigate to dashboard page.
 Step definition:
-- Click "Withdraw" in the left menu bar.
-- Click "New Withdraw" in the drop-down menu.
-- Select "0" in the "Withdraw amount" field.
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+- Enter "0" in the "Withdraw amount" field.
 - Select option "Poodle White" in the "Puppy" field.
 - Click "Confirm" button.
 Expexted result:
 - We stayed on the "Withdraw Transaction" page.
 - Error message "The withdraw amount should be more than zero" appeared.
+
+6. Withdraw transaction with more credits than available
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+Step definition:
+- Click "Withdraw" button from Menu bar.
+- Click "Withdraw Transaction List" button in the drop-down menu.
+- Copy the text from the last row of the "New Balance" field in the "Withdraw Transaction List" table.
+- Click "New Withdraw" button in the drop-down menu.
+- Enter the value previously copied from the "New Balance" column in the "Withdraw Transaction List" table,
+increased by 1.
+- Select option "Poodle White" in the "Puppy" field.
+- Click "Confirm" button.
+Expexted result:
+- We stayed on the "Withdraw Transaction" page.
+- Error message "The withdraw amount cannot be more than the account balance" appeared.
