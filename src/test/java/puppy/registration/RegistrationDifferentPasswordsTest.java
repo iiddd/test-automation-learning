@@ -4,7 +4,7 @@ import org.example.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 import puppy.base.BaseTest;
 
-public class RegistrationDifferentPasswordAndRepeatPasswordTest extends BaseTest {
+public class RegistrationDifferentPasswordsTest extends BaseTest {
 
     private static final String USERNAME = "Newacconut3";
     private static final String PASSWORD = "AbobaPuppy";
@@ -19,6 +19,6 @@ public class RegistrationDifferentPasswordAndRepeatPasswordTest extends BaseTest
                 .enterPassword(PASSWORD)
                 .enterRepeatPassword(PASSWORD2)
                 .clickRegistrationButton()
-                .checkPasswordAndRepeatPasswordDiffError();
+                .checkPasswordsDiffError();
     }
 }

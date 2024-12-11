@@ -14,6 +14,7 @@ public class RegistrationEmptyPasswordFieldTest extends BaseTest {
         registrationPage
                 .navigateToRegistrationPage()
                 .enterUsername(USERNAME)
+                .clearPassword()
                 .clickRegistrationButton()
                 .checkCreateAUserTitleIsDisplayed();
     }

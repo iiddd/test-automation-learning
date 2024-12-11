@@ -1,5 +1,6 @@
 package org.example.pages;
 
+import org.example.utils.StringUtils;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 
@@ -14,9 +15,9 @@ public class RegistrationPage extends BasePage {
     private static final By REGISTRATION_BUTTON_LOCATOR = By.xpath("//button[contains(text(), 'Register User')]");
     private static final By ALREADY_HAVE_AN_ACCOUNT_LOCATOR = By.xpath("//a[contains(text(), 'Login!')]");
     private static final By CREATE_A_USER_TITLE_LOCATOR = By.xpath("//h1[text()='Create a User!']");
-    private static final By MORE_150_OVER_CHARACTERS_ERROR_LOCATOR = By.xpath("//li[text()='Ensure this value has at most 150 characters (it has 151).']");
+    private static final By TOO_MANY_CHARACTERS_ERROR_LOCATOR = By.xpath("//li[text()='Ensure this value has at most 150 characters (it has 151).']");
     private static final By FORBIDDEN_CHARACTERS_ERROR_LOCATOR = By.xpath("//li[text()='Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.']");
-    private static final By PASSWORD_AND_REPEATPASSWORD_DIFFERENT_ERROR_LOCATOR = By.xpath("//li[text()='The two password fields didn’t match.']");
+    private static final By PASSWORDS_DIFFERENT_ERROR_LOCATOR = By.xpath("//li[text()='The two password fields didn’t match.']");
     private static final By SHORT_PASSWORD_ERROR_LOCATOR = By.xpath("//li[text()='This password is too short. It must contain at least 8 characters.']");
     private static final By PASSWORD_ONLY_DIGITS_ERROR_LOCATOR = By.xpath("//li[text()='This password is entirely numeric.']");
     private static final By PASSWORD_AND_USERNAME_ARE_SIMILAR_ERROR_LOCATOR = By.xpath("//li[text()='The password is too similar to the username.']");
@@ -76,8 +77,8 @@ public class RegistrationPage extends BasePage {
         return this;
     }
 
-    public RegistrationPage check150OverCharactersError() {
-        Assertions.assertTrue(getDriver().findElement(MORE_150_OVER_CHARACTERS_ERROR_LOCATOR).isDisplayed());
+    public RegistrationPage TooManyCharactersError() {
+        Assertions.assertTrue(getDriver().findElement(TOO_MANY_CHARACTERS_ERROR_LOCATOR).isDisplayed());
         return this;
     }
 
@@ -86,8 +87,8 @@ public class RegistrationPage extends BasePage {
         return this;
     }
 
-    public RegistrationPage checkPasswordAndRepeatPasswordDiffError() {
-        Assertions.assertTrue(getDriver().findElement(PASSWORD_AND_REPEATPASSWORD_DIFFERENT_ERROR_LOCATOR).isDisplayed());
+    public RegistrationPage checkPasswordsDiffError() {
+        Assertions.assertTrue(getDriver().findElement(PASSWORDS_DIFFERENT_ERROR_LOCATOR).isDisplayed());
         return this;
     }
 
@@ -106,10 +107,48 @@ public class RegistrationPage extends BasePage {
         return this;
     }
 
+    public RegistrationPage checkUsernameFieldIsEmpty() {
+        Assertions.assertTrue(getDriver().findElement(USERNAME_INPUT_LOCATOR).getText().isEmpty());
+        return this;
+    }
+
+    public RegistrationPage checkPasswordFieldIsEmpty() {
+        Assertions.assertTrue(getDriver().findElement(PASSWORD_INPUT_LOCATOR).getText().isEmpty());
+        return this;
+    }
+
+    public RegistrationPage checkRepeatPasswordFieldIsEmpty() {
+        Assertions.assertTrue(getDriver().findElement(REPEAT_PASSWORD_INPUT_LOCATOR).getText().isEmpty());
+        return this;
+    }
+
+    public RegistrationPage clearUsername() {
+        getDriver().findElement(USERNAME_INPUT_LOCATOR).clear();
+        return this;
+    }
+
+    public RegistrationPage clearPassword() {
+        getDriver().findElement(PASSWORD_INPUT_LOCATOR).clear();
+        return this;
+    }
+
+    public RegistrationPage clearRepeatPassword() {
+        getDriver().findElement(REPEAT_PASSWORD_INPUT_LOCATOR).clear();
+        return this;
+    }
+
+    public RegistrationPage enterRandomUsername(int lenght) {
+        enterUsername(StringUtils.genrateString(lenght));
+        return this;
+    }
+
     public RegistrationPage checkLayout() {
         checkUsernameFieldIsDisplayed();
+        checkUsernameFieldIsEmpty();
         checkPasswordFieldIsDisplayed();
+        checkPasswordFieldIsEmpty();
         checkRepeatPasswordFieldIsDisplayed();
+        checkRepeatPasswordFieldIsEmpty();
         checkRegistrationButtonIsDisplayed();
         checkBackToLoginPageLinkIsDisplayed();
         checkCreateAUserTitleIsDisplayed();

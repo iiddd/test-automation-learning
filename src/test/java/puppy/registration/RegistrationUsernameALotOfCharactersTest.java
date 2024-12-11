@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 import puppy.base.BaseTest;
 
 public class RegistrationUsernameALotOfCharactersTest extends BaseTest {
-
-    private static final String USERNAME = "AbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobu" +
-            "sgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkAbobusgavkc";
+    private static final int RANDOM_USERNAME_LENGHT = 151;
     private static final String PASSWORD = "AbobaPuppy";
     private final RegistrationPage registrationPage = new RegistrationPage();
 
@@ -15,10 +13,10 @@ public class RegistrationUsernameALotOfCharactersTest extends BaseTest {
     public void registrationUsernameALotOfCharacters() {
         registrationPage
                 .navigateToRegistrationPage()
-                .enterUsername(USERNAME)
+                .enterRandomUsername(RANDOM_USERNAME_LENGHT)
                 .enterPassword(PASSWORD)
                 .enterRepeatPassword(PASSWORD)
                 .clickRegistrationButton()
-                .check150OverCharactersError();
+                .TooManyCharactersError();
     }
 }

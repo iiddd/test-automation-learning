@@ -14,6 +14,7 @@ public class RegistrationEmptyUsernameFieldTest extends BaseTest {
     public void registrationEmptyUsernameFieldTest() {
         registrationPage
                 .navigateToRegistrationPage()
+                .clearUsername()
                 .enterPassword(PASSWORD)
                 .enterRepeatPassword(PASSWORD)
                 .clickRegistrationButton()

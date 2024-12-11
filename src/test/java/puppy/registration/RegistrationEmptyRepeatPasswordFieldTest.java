@@ -4,7 +4,7 @@ import org.example.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 import puppy.base.BaseTest;
 
-public class RegistrationRepeatPasswordFieldTest extends BaseTest {
+public class RegistrationEmptyRepeatPasswordFieldTest extends BaseTest {
 
     private static final String USERNAME = "Newaccount8";
     private static final String PASSWORD = "AbobaPuppy";
@@ -16,6 +16,7 @@ public class RegistrationRepeatPasswordFieldTest extends BaseTest {
                 .navigateToRegistrationPage()
                 .enterUsername(USERNAME)
                 .enterPassword(PASSWORD)
+                .clearRepeatPassword()
                 .clickRegistrationButton()
                 .checkCreateAUserTitleIsDisplayed();
     }
