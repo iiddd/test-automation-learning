@@ -12,8 +12,8 @@ public class TooMuchAmountTest extends BaseTest {
     private final BasePage basePage = new BasePage();
     private final PuppyAccountListPage puppyAccountListPage = new PuppyAccountListPage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
-    //private static final float HIGHER_BALANCE = ACCOUNT_BALANCE + 1;
-    //private float ACCOUNT_BALANCE = ;
+    private float ACCOUNT_BALANCE;
+
 
     @Test
     public void tooMuchAmountTest() {
@@ -22,14 +22,12 @@ public class TooMuchAmountTest extends BaseTest {
         basePage
                 .clickPuppyAccountsDropdown()
                 .goPuppyAccountList();
-        //puppyAccountListPage
-                //.getAccountBalance();
-        //ACCOUNT_BALANCE = puppyAccountListPage.getAccountBalance();
+        ACCOUNT_BALANCE = puppyAccountListPage.getAccountBalance();
         basePage
                 .clickWithdrawDropdown()
                 .goNewWithdraw();
         newWithdrawPage
-                .enterWithdrawAmount(HIGHER_BALANCE)
+                .enterWithdrawAmount(ACCOUNT_BALANCE + 1)
                 .selectPuppyOptionPoodle()
                 .clickConfirmButton()
                 .checkNewWithdrawPageHeaderIsDisplayed()

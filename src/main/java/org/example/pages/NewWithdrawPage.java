@@ -19,8 +19,8 @@ public class NewWithdrawPage {
         return getDriver().findElement(TRANSACTION_REFERENSE_FIELD_LOCATOR).getAttribute(GET_ATTRIBUTE_NAME);
     }
 
-    public NewWithdrawPage enterWithdrawAmount(String input) {
-        getDriver().findElement(WITHDRAW_AMOUNT_FIELD_LOCATOR).sendKeys(input);
+    public NewWithdrawPage enterWithdrawAmount(float input) {
+        getDriver().findElement(WITHDRAW_AMOUNT_FIELD_LOCATOR).sendKeys(Float.toString(input));
         return this;
     }
 

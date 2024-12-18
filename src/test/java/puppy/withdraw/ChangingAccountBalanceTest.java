@@ -10,8 +10,8 @@ public class ChangingAccountBalanceTest extends BaseTest {
     private final NewDepositPage newDepositPage = new NewDepositPage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
     private final PuppyAccountListPage puppyAccountListPage = new PuppyAccountListPage();
-    //private float ACCOUNT_BALANCE = ;
-    private static final String WITHDRAW_AMOUNT = "1";
+    private float ACCOUNT_BALANCE;
+    private final float WITHDRAW_AMOUNT = 1;
 
     @Test
     public void changingAccountBalanceTest() {
@@ -25,9 +25,7 @@ public class ChangingAccountBalanceTest extends BaseTest {
         basePage
                 .clickPuppyAccountsDropdown()
                 .goPuppyAccountList();
-        //puppyAccountListPage
-        //.getAccountBalance();
-        //ACCOUNT_BALANCE = puppyAccountListPage.getAccountBalance();
+        ACCOUNT_BALANCE = puppyAccountListPage.getAccountBalance();
         basePage
                 .clickWithdrawDropdown()
                 .goNewWithdraw();
@@ -39,6 +37,6 @@ public class ChangingAccountBalanceTest extends BaseTest {
                 .clickPuppyAccountsDropdown()
                 .goPuppyAccountList();
         puppyAccountListPage
-                .compareAccountBalance();
+                .checkAccountBalance(ACCOUNT_BALANCE - WITHDRAW_AMOUNT);
     }
 }

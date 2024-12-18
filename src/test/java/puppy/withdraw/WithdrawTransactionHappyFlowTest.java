@@ -10,7 +10,7 @@ public class WithdrawTransactionHappyFlowTest extends BaseTest {
     private final NewDepositPage newDepositPage = new NewDepositPage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
     private final WithdrawTransactionListPage withdrawTransactionListPage = new WithdrawTransactionListPage();
-    private static final String WITHDRAW_AMOUNT = "1";
+    private final float WITHDRAW_AMOUNT = 1;
     private String TRANSACTION_ID = "";
 
     @Test

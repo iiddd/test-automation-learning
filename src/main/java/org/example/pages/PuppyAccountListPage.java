@@ -18,12 +18,17 @@ public class PuppyAccountListPage {
     private static final By EMAIL_ADDRESS_COLUMN_LOCATOR = By.xpath("./td[position()=4]");
     private static final By BALANCE_COLUMN_LOCATOR = By.xpath("./td[position()=5]");
 
-    public String getAccountBalance(float accountBalance) {
-        return getPuppyAccounts().stream().anyMatch(puppyAccount -> puppyAccount.getFirstName().)
+    public float getAccountBalance() {
+        List<PuppyAccount> poodleList = getPuppyAccounts().stream().filter(
+                puppyAccount -> puppyAccount.getFirstName().equals("Poodle")
+        ).toList();
+        Assertions.assertTrue(poodleList.size() == 1);
+        return poodleList.getFirst().getBalance();
     }
 
-    public PuppyAccountListPage compareAccountBalance() {
-        Assertions.assertTrue(getPuppyAccounts().);
+    public PuppyAccountListPage checkAccountBalance(float expected) {
+        Assertions.assertEquals(expected, getAccountBalance());
+        return this;
     }
 
     private List<PuppyAccount> getPuppyAccounts() {
