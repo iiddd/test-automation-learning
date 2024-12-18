@@ -81,6 +81,7 @@ Step definition:
 - Click "Puppy Accounts" button from Menu bar.
 - Click "Puppy Account List" button in the drop-down menu.
 - Copy the number from the table "Puppies", the row with the first name "Poodle", the column "Balance".
+- Click "Withdraw" button from Menu bar.
 - Click "New Withdraw" button in the drop-down menu.
 - Enter in the "Withdraw amount" field the number previously copied from the "Puppies" table, increased by 1.
 - Select option "Poodle White" in the "Puppy" field.
