@@ -10,7 +10,7 @@ public class EmptyPuppyFieldTest extends BaseTest {
     private final LoginPage loginPage = new LoginPage();
     private final BasePage basePage = new BasePage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
-    private static final String WITHDRAW_AMOUNT = "1";
+    private final float WITHDRAW_AMOUNT = 1;
 
     @Test
     public void emptyPuppyFieldTest() {
