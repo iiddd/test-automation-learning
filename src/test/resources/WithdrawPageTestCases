@@ -1,0 +1,108 @@
+1. Withdraw transaction happy flow
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+- Create a new deposit with the amount of 1 on the "New Deposit" page.
+Step definition:
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+- Remember text in the "Transaction reference" field.
+- Enter "1" in the "Withdraw amount" field.
+- Select option "Poodle White" in the "Puppy" field.
+- Click "Confirm" button.
+Expected result:
+- Automatic transition to the page "Withdraw Transaction List".
+- New transaction with previously copied text in the "Transaction Reference" field.
+
+2. Withdraw transaction with empty fields
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+Step definition:
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+- Clear "Withdraw amount" field.
+- Select option "---------" in the "Puppy" field.
+- Click "Confirm" button.
+Expected result:
+- We stayed on the "Withdraw Transaction" page.
+
+3. Withdraw transaction with empty field "Withdraw amount"
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+Step definition:
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+- Clear "Withdraw amount" field.
+- Select option "Poodle White" in the "Puppy" field.
+- Click "Confirm" button.
+Expected result:
+- We stayed on the "Withdraw Transaction" page.
+
+4. Withdraw transaction with empty field "Puppy"
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+Step definition:
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+- Enter "1" in the "Withdraw amount" field.
+- Select option "---------" in the "Puppy" field.
+- Click "Confirm" button.
+Expected result:
+- We stayed on the "Withdraw Transaction" page.
+
+5. Withdraw transaction with field "Withdraw amount" is "0"
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+Step definition:
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+- Enter "0" in the "Withdraw amount" field.
+- Select option "Poodle White" in the "Puppy" field.
+- Click "Confirm" button.
+Expected result:
+- We stayed on the "Withdraw Transaction" page.
+- Error message "The withdraw amount should be more than zero" appeared.
+
+6. Withdraw transaction with more credits than available
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+Step definition:
+- Click "Puppy Accounts" button from Menu bar.
+- Click "Puppy Account List" button in the drop-down menu.
+- Copy the number from the table "Puppies", the row with the first name "Poodle", the column "Balance".
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+- Enter in the "Withdraw amount" field the number previously copied from the "Puppies" table, increased by 1.
+- Select option "Poodle White" in the "Puppy" field.
+- Click "Confirm" button.
+Expected result:
+- We stayed on the "Withdraw Transaction" page.
+- Error message "The withdraw amount cannot be more than the account balance" appeared.
+
+7. Checking the change in account balance when making a withdrawal transaction
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+- Create a new deposit with the amount of 1 on the "New Deposit" page.
+Step definition:
+- Click "Puppy Accounts" button from Menu bar.
+- Click "Puppy Account List" button in the drop-down menu.
+- Remember the number from the table "Puppies", the row with the first name "Poodle", the column "Balance".
+- Create a new withdraw transaction with the amount of 1 on the "New Withdraw" page.
+- Click "Puppy Accounts" button from Menu bar.
+- Click "Puppy Account List" button in the drop-down menu.
+- Compare the number from the table "Puppies", the row with the first name "Poodle", the column "Balance" with the previously remembered.
+Expected result:
+- The numbers are the same.
