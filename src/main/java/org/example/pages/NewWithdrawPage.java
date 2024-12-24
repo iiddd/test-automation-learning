@@ -13,10 +13,10 @@ public class NewWithdrawPage {
     private static final By NEW_WITHDRAW_PAGE_HEADER_LOCATOR = By.xpath("//h1[text()='Withdraw Transaction']");
     private static final By ZERO_WITHDRAW_AMOUNT_ERROR_LOCATOR = By.xpath("//span[text()='The withdraw amount should be more than zero.']");
     private static final By TOO_MUCH_AMOUNT_ERROR_LOCATOR = By.xpath("//span[text()='The withdraw amount cannot be more than the account balance.']");
-    private static final String GET_ATTRIBUTE_NAME = "value";
+    private static final String VALUE_ATTRIBUTE_NAME = "value";
 
     public String getTransactionReference() {
-        return getDriver().findElement(TRANSACTION_REFERENSE_FIELD_LOCATOR).getAttribute(GET_ATTRIBUTE_NAME);
+        return getDriver().findElement(TRANSACTION_REFERENSE_FIELD_LOCATOR).getAttribute(VALUE_ATTRIBUTE_NAME);
     }
 
     public NewWithdrawPage enterWithdrawAmount(float input) {
