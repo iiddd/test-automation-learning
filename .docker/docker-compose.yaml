@@ -1,6 +1,8 @@
 services:
   puppy-bank:
-    image: vncrtech/puppybank:latest
+    image: iiddd/puppybank:latest
     container_name: pesiy-bank
+    volumes:
+      - ./db.sqlite3:/app/db.sqlite3
     ports:
       - "8000:8000"
