@@ -1,23 +1,22 @@
-package puppy.registration;
+package org.example.puppy.registration;
 
 import org.example.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
-import puppy.base.BaseTest;
+import org.example.puppy.base.BaseTest;
 
-public class RegistrationEmptyUsernameFieldTest extends BaseTest {
-
+public class RegistrationUsernameALotOfCharactersTest extends BaseTest {
+    private static final int RANDOM_USERNAME_LENGHT = 151;
     private static final String PASSWORD = "AbobaPuppy";
     private final RegistrationPage registrationPage = new RegistrationPage();
 
-
     @Test
-    public void registrationEmptyUsernameFieldTest() {
+    public void registrationUsernameALotOfCharacters() {
         registrationPage
                 .navigateToRegistrationPage()
-                .clearUsername()
+                .enterRandomUsername(RANDOM_USERNAME_LENGHT)
                 .enterPassword(PASSWORD)
                 .enterRepeatPassword(PASSWORD)
                 .clickRegistrationButton()
-                .checkCreateAUserTitleIsDisplayed();
+                .TooManyCharactersError();
     }
 }

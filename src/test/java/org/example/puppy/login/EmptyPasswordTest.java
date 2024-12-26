@@ -1,8 +1,8 @@
-package puppy.login;
+package org.example.puppy.login;
 
 import org.example.pages.LoginPage;
 import org.junit.jupiter.api.Test;
-import puppy.base.BaseTest;
+import org.example.puppy.base.BaseTest;
 
 public class EmptyPasswordTest extends BaseTest {
     private static final String USERNAME = "admin";

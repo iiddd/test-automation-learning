@@ -1,8 +1,8 @@
-package puppy.registration;
+package org.example.puppy.registration;
 
 import org.example.pages.*;
 import org.junit.jupiter.api.Test;
-import puppy.base.BaseTest;
+import org.example.puppy.base.BaseTest;
 
 public class RegistrationHappyFlowTest extends BaseTest {
 
