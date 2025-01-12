@@ -1,23 +1,24 @@
-package puppy.registration;
+package org.example.puppy.registration;
 
 import org.example.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
-import puppy.base.BaseTest;
+import org.example.puppy.base.BaseTest;
 
-public class RegistrationEmptyRepeatPasswordFieldTest extends BaseTest {
+public class RegistrationDifferentPasswordsTest extends BaseTest {
 
-    private static final String USERNAME = "Newaccount8";
+    private static final String USERNAME = "Newacconut3";
     private static final String PASSWORD = "AbobaPuppy";
+    private static final String PASSWORD2 = "AbobaPoppy";
     private final RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
-    public void registrationRepeatPasswordFieldTest() {
+    public void registrationDifferentPasswordAndRepeatPasswordTest() {
         registrationPage
                 .navigateToRegistrationPage()
                 .enterUsername(USERNAME)
                 .enterPassword(PASSWORD)
-                .clearRepeatPassword()
+                .enterRepeatPassword(PASSWORD2)
                 .clickRegistrationButton()
-                .checkCreateAUserTitleIsDisplayed();
+                .checkPasswordsDiffError();
     }
 }
