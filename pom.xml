@@ -20,6 +20,7 @@
         <selenium-java.version>4.24.0</selenium-java.version>
         <webdrivermanager.version>5.9.2</webdrivermanager.version>
         <lombok.version>1.18.36</lombok.version>
+        <sqlite-jdbc.version>3.47.2.0</sqlite-jdbc.version>
     </properties>
 
     <dependencies>
@@ -53,6 +54,11 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>${sqlite-jdbc.version}</version>
         </dependency>
     </dependencies>
     <build>
