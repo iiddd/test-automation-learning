@@ -2,9 +2,9 @@ package org.example.puppy.registration;
 
 import org.example.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
-import org.example.puppy.base.BaseTest;
+import org.example.puppy.base.BaseWebTest;
 
-public class RegistrationUsernameForbiddenCharactersTest extends BaseTest {
+public class RegistrationUsernameForbiddenCharactersTest extends BaseWebTest {
 
     private static final String USERNAME = "Newacconut*?2";
     private static final String PASSWORD = "AbobaPuppy";
