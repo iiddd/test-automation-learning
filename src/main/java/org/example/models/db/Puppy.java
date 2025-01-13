@@ -1,11 +1,12 @@
-package org.example.models;
+package org.example.models.db;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class Puppy {
+    private int id;
     private String accountNumber;
     private float accountBalance;
     private String firstName;
@@ -13,4 +14,5 @@ public class Puppy {
     private String address;
     private String mobileNumber;
     private String emailAddress;
+    private int createdById;
 }

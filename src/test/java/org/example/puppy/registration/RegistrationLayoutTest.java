@@ -2,9 +2,9 @@ package org.example.puppy.registration;
 
 import org.example.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
-import org.example.puppy.base.BaseTest;
+import org.example.puppy.base.BaseWebTest;
 
-public class RegistrationLayoutTest extends BaseTest {
+public class RegistrationLayoutTest extends BaseWebTest {
 
     private final RegistrationPage registrationPage = new RegistrationPage();
 

@@ -3,7 +3,7 @@ package requstprovider;
 import io.restassured.http.ContentType;
 import io.restassured.http.Cookie;
 import io.restassured.specification.RequestSpecification;
-import org.example.models.Puppy;
+import org.example.models.rest.Puppy;
 
 import java.util.HashMap;
 import java.util.Map;
