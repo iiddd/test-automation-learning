@@ -1,13 +1,15 @@
 package org.example.pages;
 
+import org.example.utils.LettersUtils;
 import org.openqa.selenium.By;
 
 import static org.example.core.DriverHolder.getDriver;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NewWithdrawPage {
     private static final By TRANSACTION_REFERENSE_FIELD_LOCATOR = By.xpath("//input[@name='transaction_reference']");
     private static final By WITHDRAW_AMOUNT_FIELD_LOCATOR = By.xpath("//input[@name='withdraw_amount']");
-    private static final By PUPPY_OPTION_POODLE_LOCATOR = By.xpath("//option[text()='Poodle White']");
+    private static final By PUPPY_OPTION_LOCATOR = By.xpath("//option[text()='New Puppy']");
     private static final By CONFIRM_BUTTON_LOCATOR = By.xpath("//span[text()='Confirm']");
     private static final By PUPPY_OPTION_EMPTY_LOCATOR = By.xpath("//option[text()='---------']");
     private static final By NEW_WITHDRAW_PAGE_HEADER_LOCATOR = By.xpath("//h1[text()='Withdraw Transaction']");
@@ -24,8 +26,8 @@ public class NewWithdrawPage {
         return this;
     }
 
-    public NewWithdrawPage selectPuppyOptionPoodle() {
-        getDriver().findElement(PUPPY_OPTION_POODLE_LOCATOR).click();
+    public NewWithdrawPage selectPuppyOption() {
+        getDriver().findElement(PUPPY_OPTION_LOCATOR).click();
         return this;
     }
 
@@ -56,6 +58,21 @@ public class NewWithdrawPage {
 
     public NewWithdrawPage checkTooMuchAmountErrorIsDisplayed() {
         getDriver().findElement(TOO_MUCH_AMOUNT_ERROR_LOCATOR).isDisplayed();
+        return this;
+    }
+
+    public NewWithdrawPage enterWithdrawAmount(String input) {
+        getDriver().findElement(WITHDRAW_AMOUNT_FIELD_LOCATOR).sendKeys(input);
+        return this;
+    }
+
+    public NewWithdrawPage enterRandomLetters(int lenght) {
+        enterWithdrawAmount(LettersUtils.genrateLetters(lenght));
+        return this;
+    }
+
+    public NewWithdrawPage checkWithdrawAmountFieldIsEmpty() {
+        assertTrue(getDriver().findElement(WITHDRAW_AMOUNT_FIELD_LOCATOR).getText().isEmpty());
         return this;
     }
 }

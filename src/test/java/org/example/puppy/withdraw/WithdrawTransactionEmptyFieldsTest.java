@@ -1,18 +1,18 @@
-package puppy.withdraw;
+package org.example.puppy.withdraw;
 
 import org.example.pages.BasePage;
 import org.example.pages.LoginPage;
 import org.example.pages.NewWithdrawPage;
+import org.example.puppy.base.BaseWebTest;
 import org.junit.jupiter.api.Test;
-import puppy.base.BaseTest;
 
-public class EmptyWithdrawAmountFieldTest extends BaseTest {
+public class WithdrawTransactionEmptyFieldsTest extends BaseWebTest {
     private final LoginPage loginPage = new LoginPage();
     private final BasePage basePage = new BasePage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
 
     @Test
-    public void emptyWithdrawAmountFieldTest() {
+    public void withdrawTransactionEmptyFieldsTest() {
         loginPage
                 .loginAsAdmin();
         basePage
@@ -20,7 +20,7 @@ public class EmptyWithdrawAmountFieldTest extends BaseTest {
                 .goNewWithdraw();
         newWithdrawPage
                 .clearWithdrawAmountField()
-                .selectPuppyOptionPoodle()
+                .selectPuppyOptionEmpty()
                 .clickConfirmButton()
                 .checkNewWithdrawPageHeaderIsDisplayed();
     }

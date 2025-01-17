@@ -1,7 +1,10 @@
 package org.example.utils;
 
+import org.example.models.PuppyAccount;
 import org.example.models.db.Admin;
 import org.example.models.db.Puppy;
+import org.example.pages.PuppyAccountListPage;
+import org.junit.jupiter.api.Assertions;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -72,6 +75,19 @@ public class PuppyRepository {
         return puppyList;
     }
 
+    public static float getAccountBalance() {
+        List<Puppy> puppyList = getPuppies().stream().filter(
+                puppyAccount -> puppyAccount.getFirstName().equals("New")
+        ).toList();
+        Assertions.assertTrue(puppyList.size() == 1);
+        return puppyList.getFirst().getAccountBalance();
+    }
+
+    public PuppyRepository checkAccountBalance(float expected) {
+        Assertions.assertEquals(expected, getAccountBalance());
+        return this;
+    }
+
     public static void executeSqlCommand(String sql) {
         try (Connection connection = connect(getDbUrl());
              Statement statement = connection.createStatement()) {
@@ -95,5 +111,59 @@ public class PuppyRepository {
     private static String getDbUrl() {
         Path relativePath = Paths.get(System.getProperty("user.dir"), ".docker", "db.sqlite3");
         return "jdbc:sqlite:" + relativePath.toAbsolutePath();
+    }
+
+    public static void createPuppy(int id, String firstName, String lastName, String address,
+                                   String accountNumber, String mobileNumber, String emailAddress,
+                                   double accountBalance, int createdById) {
+        String SqlQuery = "INSERT INTO app_clients_client ("
+                + "id, first_name, last_name, address, account_number, "
+                + "mobile_number, email_address, account_balance, created_by_id"
+                + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection connection = connect(getDbUrl());
+             PreparedStatement preparedStatement = connection.prepareStatement(SqlQuery)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.setString(2, firstName);
+            preparedStatement.setString(3, lastName);
+            preparedStatement.setString(4, address);
+            preparedStatement.setString(5, accountNumber);
+            preparedStatement.setString(6, mobileNumber);
+            preparedStatement.setString(7, emailAddress);
+            preparedStatement.setDouble(8, accountBalance);
+            preparedStatement.setInt(9, createdById);
+
+            // Выполнение запроса
+            preparedStatement.executeUpdate();
+            System.out.println("Puppy created successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void createPuppyBalance(int id, double accountBalance) {
+        String SqlQuery = "INSERT INTO app_clients_client ("
+                + "id, first_name, last_name, address, account_number, "
+                + "mobile_number, email_address, account_balance, created_by_id"
+                + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection connection = connect(getDbUrl());
+             PreparedStatement preparedStatement = connection.prepareStatement(SqlQuery)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.setString(2, "New");
+            preparedStatement.setString(3, "Puppy");
+            preparedStatement.setString(4, "Country");
+            preparedStatement.setString(5, "89b26f0b-1bad-4b0a-8d60-5af642668dec");
+            preparedStatement.setString(6, "0000");
+            preparedStatement.setString(7, "newpuppy@mail.com");
+            preparedStatement.setDouble(8, accountBalance);
+            preparedStatement.setInt(9, 1);
+
+            // Выполнение запроса
+            preparedStatement.executeUpdate();
+            System.out.println("Puppy created successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

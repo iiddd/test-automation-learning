@@ -1,28 +1,31 @@
-package puppy.withdraw;
+package org.example.puppy.withdraw;
 
 import org.example.pages.BasePage;
 import org.example.pages.LoginPage;
 import org.example.pages.NewWithdrawPage;
+import org.example.puppy.base.BaseWebTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import puppy.base.BaseTest;
 
-public class EmptyPuppyFieldTest extends BaseTest {
+public class LettersInAmountTest extends BaseWebTest {
     private final LoginPage loginPage = new LoginPage();
     private final BasePage basePage = new BasePage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
-    private final float WITHDRAW_AMOUNT = 1;
+    private static final int RANDOM_AMOUNT_LENGHT = 2;
 
-    @Test
-    public void emptyPuppyFieldTest() {
+
+    @BeforeEach
+    public void preCondition() {
         loginPage
                 .loginAsAdmin();
         basePage
                 .clickWithdrawDropdown()
                 .goNewWithdraw();
+    }
+    @Test
+    public void lettersInAmountTest() {
         newWithdrawPage
-                .enterWithdrawAmount(WITHDRAW_AMOUNT)
-                .selectPuppyOptionEmpty()
-                .clickConfirmButton()
-                .checkNewWithdrawPageHeaderIsDisplayed();
+                .enterRandomLetters(RANDOM_AMOUNT_LENGHT)
+                .checkWithdrawAmountFieldIsEmpty();
     }
 }
