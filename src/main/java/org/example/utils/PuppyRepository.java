@@ -115,7 +115,7 @@ public class PuppyRepository {
 
     public static void createPuppy(int id, String firstName, String lastName, String address,
                                    String accountNumber, String mobileNumber, String emailAddress,
-                                   double accountBalance, int createdById) {
+                                   float accountBalance, int createdById) {
         String SqlQuery = "INSERT INTO app_clients_client ("
                 + "id, first_name, last_name, address, account_number, "
                 + "mobile_number, email_address, account_balance, created_by_id"
@@ -130,7 +130,7 @@ public class PuppyRepository {
             preparedStatement.setString(5, accountNumber);
             preparedStatement.setString(6, mobileNumber);
             preparedStatement.setString(7, emailAddress);
-            preparedStatement.setDouble(8, accountBalance);
+            preparedStatement.setFloat(8, accountBalance);
             preparedStatement.setInt(9, createdById);
 
             // Выполнение запроса
@@ -141,7 +141,7 @@ public class PuppyRepository {
         }
     }
 
-    public static void createPuppyBalance(int id, double accountBalance) {
+    public static void createPuppyBalance(int id, float accountBalance) {
         String SqlQuery = "INSERT INTO app_clients_client ("
                 + "id, first_name, last_name, address, account_number, "
                 + "mobile_number, email_address, account_balance, created_by_id"
@@ -156,7 +156,7 @@ public class PuppyRepository {
             preparedStatement.setString(5, "89b26f0b-1bad-4b0a-8d60-5af642668dec");
             preparedStatement.setString(6, "0000");
             preparedStatement.setString(7, "newpuppy@mail.com");
-            preparedStatement.setDouble(8, accountBalance);
+            preparedStatement.setFloat(8, accountBalance);
             preparedStatement.setInt(9, 1);
 
             // Выполнение запроса

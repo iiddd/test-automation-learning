@@ -16,7 +16,7 @@ import requstprovider.PuppyRequestProvider;
 
 public class ZeroWithdrawAmountFieldTest extends BaseWebTest {
     private static final int ID = 1;
-    private static final double ACCOUNT_BALANCE = 1;
+    private static final float ACCOUNT_BALANCE = 1;
     private final LoginPage loginPage = new LoginPage();
     private final BasePage basePage = new BasePage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
