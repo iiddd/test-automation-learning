@@ -31,8 +31,7 @@ public class TooMuchAmountTest extends BaseWebTest {
     public void preCondition() {
         PuppyRepository.createPuppy(ID, ACCOUNT_NUMBER, ACCOUNT_BALANCE);
         loginPage
-                .loginAsAdmin();
-        basePage
+                .loginAsAdmin()
                 .clickWithdrawDropdown()
                 .goNewWithdraw();
     }
