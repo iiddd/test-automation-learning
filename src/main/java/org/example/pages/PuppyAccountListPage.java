@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 import static org.example.core.DriverHolder.getDriver;
 
-public class PuppyAccountListPage {
+public class PuppyAccountListPage extends BasePage {
     private static final By ACCOUNT_ROW_LOCATOR = By.xpath("//tbody/tr");
     private static final By FIRST_NAME_COLUMN_LOCATOR = By.xpath("./td[position()=1]");
     private static final By LAST_NAME_COLUMN_LOCATOR = By.xpath("./td[position()=2]");
@@ -18,17 +18,16 @@ public class PuppyAccountListPage {
     private static final By EMAIL_ADDRESS_COLUMN_LOCATOR = By.xpath("./td[position()=4]");
     private static final By BALANCE_COLUMN_LOCATOR = By.xpath("./td[position()=5]");
 
-    public float getAccountBalance() {
-        List<PuppyAccount> poodleList = getPuppyAccounts().stream().filter(
-                puppyAccount -> puppyAccount.getFirstName().equals("Poodle")
-        ).toList();
-        Assertions.assertTrue(poodleList.size() == 1);
-        return poodleList.getFirst().getBalance();
+    public PuppyAccountListPage checkAccountBalance(float expected, String accountNumber) {
+        Assertions.assertEquals(expected, getAccountBalance(accountNumber));
+        return this;
     }
 
-    public PuppyAccountListPage checkAccountBalance(float expected) {
-        Assertions.assertEquals(expected, getAccountBalance());
-        return this;
+    private float getAccountBalance(String accountNumber) {
+        List<PuppyAccount> poodleList = getPuppyAccounts().stream().filter(
+                puppyAccount -> puppyAccount.getAccountNumber().equals(accountNumber)).toList();
+        Assertions.assertEquals(1, poodleList.size());
+        return poodleList.getFirst().getBalance();
     }
 
     private List<PuppyAccount> getPuppyAccounts() {

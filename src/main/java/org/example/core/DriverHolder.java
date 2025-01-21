@@ -16,6 +16,7 @@ public class DriverHolder {
         driver = new ChromeDriver(
                 new ChromeOptions()
                         .addArguments("--disable-search-engine-choice-screen")
+                        .addArguments("--lang=en-GB")
         );
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }

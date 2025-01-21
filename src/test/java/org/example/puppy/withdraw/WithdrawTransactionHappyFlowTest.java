@@ -4,8 +4,9 @@ import io.restassured.http.Cookie;
 import io.restassured.response.ValidatableResponse;
 import org.example.pages.*;
 import org.example.puppy.base.BaseWebTest;
-import org.example.utils.PuppyRepository;
+import org.example.repository.PuppyRepository;
 import org.example.utils.RestUtils;
+import org.example.utils.UuidGenerator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,9 +15,9 @@ import requstprovider.PuppyRequestProvider;
 
 public class WithdrawTransactionHappyFlowTest extends BaseWebTest {
     private static final int ID = 1;
+    private static final String ACCOUNT_NUMBER = UuidGenerator.generateUuid();
     private static final float ACCOUNT_BALANCE = 1;
     private final LoginPage loginPage = new LoginPage();
-    private final BasePage basePage = new BasePage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
     private final WithdrawTransactionListPage withdrawTransactionListPage = new WithdrawTransactionListPage();
     private final float WITHDRAW_AMOUNT = 1;
@@ -27,10 +28,9 @@ public class WithdrawTransactionHappyFlowTest extends BaseWebTest {
 
     @BeforeEach
     public void preCondition() {
-       PuppyRepository.createPuppyBalance(ID, ACCOUNT_BALANCE);
+       PuppyRepository.createPuppy(ID, ACCOUNT_NUMBER, ACCOUNT_BALANCE);
         loginPage
-                .loginAsAdmin();
-        basePage
+                .loginAsAdmin()
                 .clickWithdrawDropdown()
                 .goNewWithdraw();
     }

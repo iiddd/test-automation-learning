@@ -2,10 +2,12 @@ package org.example.puppy.withdraw;
 
 import io.restassured.http.Cookie;
 import io.restassured.response.ValidatableResponse;
+import org.example.helpers.DbAssertions;
 import org.example.pages.*;
 import org.example.puppy.base.BaseWebTest;
-import org.example.utils.PuppyRepository;
+import org.example.repository.PuppyRepository;
 import org.example.utils.RestUtils;
+import org.example.utils.UuidGenerator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,19 +16,20 @@ import requstprovider.PuppyRequestProvider;
 
 public class ChangingAccountBalanceTest extends BaseWebTest {
     private static final int ID = 1;
+    private static final String ACCOUNT_NUMBER = UuidGenerator.generateUuid();
     private static final float ACCOUNT_BALANCE = 1;
     private final LoginPage loginPage = new LoginPage();
     private final BasePage basePage = new BasePage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
     private final float WITHDRAW_AMOUNT = 1;
-    private final PuppyRepository puppyRepository = new PuppyRepository();
+    private final PuppyAccountListPage puppyAccountListPage = new PuppyAccountListPage();
     private final LoginRequestProvider loginRequestProvider = new LoginRequestProvider();
     private final PuppyRequestProvider puppyRequestProvider = new PuppyRequestProvider();
     private static final String COOKIE_NAME = "sessionid";
 
     @BeforeEach
     public void preCondition() {
-        PuppyRepository.createPuppyBalance(ID, ACCOUNT_BALANCE);
+        PuppyRepository.createPuppy(ID, ACCOUNT_NUMBER, ACCOUNT_BALANCE);
         loginPage
                 .loginAsAdmin();
         basePage
@@ -39,9 +42,12 @@ public class ChangingAccountBalanceTest extends BaseWebTest {
         newWithdrawPage
                 .enterWithdrawAmount(WITHDRAW_AMOUNT)
                 .selectPuppyOption()
-                .clickConfirmButton();
-        puppyRepository
-                .checkAccountBalance(0);
+                .clickConfirmButton()
+                .clickPuppyAccountsDropdown()
+                .goPuppyAccountList();
+        puppyAccountListPage
+                .checkAccountBalance(0, ACCOUNT_NUMBER);
+        DbAssertions.checkAccountBalance(0, ID);
     }
 
     @AfterEach

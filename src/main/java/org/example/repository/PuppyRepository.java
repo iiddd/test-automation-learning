@@ -1,9 +1,8 @@
-package org.example.utils;
+package org.example.repository;
 
-import org.example.models.PuppyAccount;
 import org.example.models.db.Admin;
 import org.example.models.db.Puppy;
-import org.example.pages.PuppyAccountListPage;
+import org.example.repository.db.NamedParameterStatement;
 import org.junit.jupiter.api.Assertions;
 
 import java.nio.file.Path;
@@ -75,17 +74,11 @@ public class PuppyRepository {
         return puppyList;
     }
 
-    public static float getAccountBalance() {
+    public static float getAccountBalance(int id) {
         List<Puppy> puppyList = getPuppies().stream().filter(
-                puppyAccount -> puppyAccount.getFirstName().equals("New")
-        ).toList();
+                puppyAccount -> puppyAccount.getId() == id).toList();
         Assertions.assertTrue(puppyList.size() == 1);
         return puppyList.getFirst().getAccountBalance();
-    }
-
-    public PuppyRepository checkAccountBalance(float expected) {
-        Assertions.assertEquals(expected, getAccountBalance());
-        return this;
     }
 
     public static void executeSqlCommand(String sql) {
@@ -119,51 +112,31 @@ public class PuppyRepository {
         String SqlQuery = "INSERT INTO app_clients_client ("
                 + "id, first_name, last_name, address, account_number, "
                 + "mobile_number, email_address, account_balance, created_by_id"
-                + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + ") VALUES (:id, :first_name, :last_name, :address, :account_number, "
+                + ":mobile_number, :email_address, :account_balance, :created_by_id)";
 
         try (Connection connection = connect(getDbUrl());
-             PreparedStatement preparedStatement = connection.prepareStatement(SqlQuery)) {
-            preparedStatement.setInt(1, id);
-            preparedStatement.setString(2, firstName);
-            preparedStatement.setString(3, lastName);
-            preparedStatement.setString(4, address);
-            preparedStatement.setString(5, accountNumber);
-            preparedStatement.setString(6, mobileNumber);
-            preparedStatement.setString(7, emailAddress);
-            preparedStatement.setFloat(8, accountBalance);
-            preparedStatement.setInt(9, createdById);
+             NamedParameterStatement namedStatement = new NamedParameterStatement(connection, SqlQuery)) {
 
-            // Выполнение запроса
-            preparedStatement.executeUpdate();
+            namedStatement.setParameter("id", id);
+            namedStatement.setParameter("first_name", firstName);
+            namedStatement.setParameter("last_name", lastName);
+            namedStatement.setParameter("address", address);
+            namedStatement.setParameter("account_number", accountNumber);
+            namedStatement.setParameter("mobile_number", mobileNumber);
+            namedStatement.setParameter("email_address", emailAddress);
+            namedStatement.setParameter("account_balance", accountBalance);
+            namedStatement.setParameter("created_by_id", createdById);
+
+            namedStatement.executeUpdate();
             System.out.println("Puppy created successfully.");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void createPuppyBalance(int id, float accountBalance) {
-        String SqlQuery = "INSERT INTO app_clients_client ("
-                + "id, first_name, last_name, address, account_number, "
-                + "mobile_number, email_address, account_balance, created_by_id"
-                + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        try (Connection connection = connect(getDbUrl());
-             PreparedStatement preparedStatement = connection.prepareStatement(SqlQuery)) {
-            preparedStatement.setInt(1, id);
-            preparedStatement.setString(2, "New");
-            preparedStatement.setString(3, "Puppy");
-            preparedStatement.setString(4, "Country");
-            preparedStatement.setString(5, "89b26f0b-1bad-4b0a-8d60-5af642668dec");
-            preparedStatement.setString(6, "0000");
-            preparedStatement.setString(7, "newpuppy@mail.com");
-            preparedStatement.setFloat(8, accountBalance);
-            preparedStatement.setInt(9, 1);
-
-            // Выполнение запроса
-            preparedStatement.executeUpdate();
-            System.out.println("Puppy created successfully.");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void createPuppy(int id, String accountNumber, float accountBalance) {
+        createPuppy(id, "New", "Puppy", "Country", accountNumber, "1111",
+                "newpuppy@mail.com", accountBalance, 1);
     }
 }

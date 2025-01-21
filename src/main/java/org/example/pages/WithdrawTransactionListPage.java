@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 import static org.example.core.DriverHolder.getDriver;
 
-public class WithdrawTransactionListPage {
+public class WithdrawTransactionListPage extends BasePage {
 
     private static final By WITHDRAW_TRANSACTION_LIST_HEADER_LOCATOR = By.xpath("//h1[text()='Withdraw Transaction List']");
     private static final By WITHDRAW_ROW_LOCATOR = By.xpath("//tbody/tr");
@@ -32,6 +32,15 @@ public class WithdrawTransactionListPage {
     private static final String DATE_FORMAT = "MMMM d, uuuu";
     private static final String DATE_FORMAT_DOT = "MMM. d, uuuu";
 
+    private static LocalDate parseDate(String dateString, List<DateTimeFormatter> formatters) {
+        for (DateTimeFormatter formatter : formatters) {
+            try {
+                return LocalDate.parse(dateString, formatter);
+            } catch (DateTimeParseException e) {
+            }
+        }
+        throw new IllegalArgumentException(ERROR_TEXT + dateString);
+    }
 
     public WithdrawTransactionListPage checkWithdrawTransactionListIsDisplayed() {
         Assertions.assertTrue(getDriver().findElement(WITHDRAW_TRANSACTION_LIST_HEADER_LOCATOR).isDisplayed());
@@ -75,15 +84,5 @@ public class WithdrawTransactionListPage {
         ZoneId defaultZoneId = ZoneId.systemDefault();
         Instant instant = localDate.atStartOfDay(defaultZoneId).toInstant();
         return Date.from(instant);
-    }
-
-    private static LocalDate parseDate(String dateString, List<DateTimeFormatter> formatters) {
-        for (DateTimeFormatter formatter : formatters) {
-            try {
-                return LocalDate.parse(dateString, formatter);
-            } catch (DateTimeParseException e) {
-            }
-        }
-        throw new IllegalArgumentException( ERROR_TEXT + dateString);
     }
 }

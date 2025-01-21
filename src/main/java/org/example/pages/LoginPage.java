@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 import static org.example.core.DriverHolder.getDriver;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 
     private static final String PUPPY_URL = "http://localhost:8000/";
     private static final By USERNAME_INPUT_LOCATOR = By.xpath("//input[@placeholder='Username']");
@@ -56,12 +56,12 @@ public class LoginPage {
     }
 
     public LoginPage enterRandomUsername(int lenght) {
-        enterUsername(StringUtils.genrateString(lenght));
+        enterUsername(StringUtils.generateAlphanumericString(lenght));
         return this;
     }
 
     public LoginPage enterRandomPassword(int lenght) {
-        enterPassword(StringUtils.genrateString(lenght));
+        enterPassword(StringUtils.generateAlphanumericString(lenght));
         return this;
     }
 

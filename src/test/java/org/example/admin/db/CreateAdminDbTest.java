@@ -1,6 +1,6 @@
 package org.example.admin.db;
 
-import org.example.utils.PuppyRepository;
+import org.example.repository.PuppyRepository;
 import org.junit.jupiter.api.Test;
 
 public class CreateAdminDbTest {

@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 import static org.example.core.DriverHolder.getDriver;
 
-public class NewDepositPage {
+public class NewDepositPage extends BasePage {
     private static final By DEPOSIT_AMOUNT_FIELD_LOCATOR = By.xpath("//input[@name='deposit_amount']");
     private static final By PUPPY_OPTION_POODLE_LOCATOR = By.xpath("//option[text()='Poodle White']");
     private static final By CONFIRM_BUTTON_LOCATOR = By.xpath("//span[text()='Confirm']");
