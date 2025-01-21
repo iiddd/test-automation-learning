@@ -1,0 +1,111 @@
+1. Withdraw transaction happy flow
+Pre-condition:
+- Create new puppy account with balance 1.
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+Step definition:
+- Remember text in the "Transaction reference" field.
+- Enter "1" in the "Withdraw amount" field.
+- Select previously created account in the "Puppy" field.
+- Click "Confirm" button.
+Expected result:
+- Automatic transition to the page "Withdraw Transaction List".
+- New transaction with previously copied text in the "Transaction Reference" field.
+Post-Condition:
+- Delete previously created puppy account.
+
+2. Withdraw transaction with empty fields
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+Step definition:
+- Clear "Withdraw amount" field.
+- Select option "---------" in the "Puppy" field.
+- Click "Confirm" button.
+Expected result:
+- We stayed on the "Withdraw Transaction" page.
+- Browser errors about unfilled fields exist.
+
+3. Withdraw transaction with field "Withdraw amount" is "0"
+Pre-condition:
+- Create new puppy account with balance 1.
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+Step definition:
+- Enter "0" in the "Withdraw amount" field.
+- Select previously created account in the "Puppy" field.
+- Click "Confirm" button.
+Expected result:
+- We stayed on the "Withdraw Transaction" page.
+- Error message "The withdraw amount should be more than zero" appeared.
+Post-Condition:
+- Delete previously created puppy account.
+
+4. Withdraw transaction with more credits than available
+Pre-condition:
+- Create new puppy account with balance 1.
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+Step definition:
+- Enter "2" in the "Withdraw amount" field.
+- Select previously created account in the "Puppy" field.
+- Click "Confirm" button.
+Expected result:
+- We stayed on the "Withdraw Transaction" page.
+- Error message "The withdraw amount cannot be more than the account balance" appeared.
+Post-Condition:
+- Delete previously created puppy account.
+
+5. Checking the change in account balance when making a withdrawal transaction
+Pre-condition:
+- Create new puppy account with balance 1.
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+Step definition:
+- Enter "1" in the "Withdraw amount" field.
+- Select previously created account in the "Puppy" field.
+- Click "Confirm" button.
+Expected result:
+- Account balance changed to "0"
+Post-Condition:
+- Delete previously created puppy account.
+
+6. Withdraw amount with symbols instead of numbers
+Pre-condition:
+- Create new puppy account with any balance.
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+Step definition:
+- Enter "--" in the "Withdraw amount" field.
+- Select previously created account in the "Puppy" field.
+- Click "Confirm" button.
+Expected result:
+- We stayed on the "Withdraw Transaction" page.
+- Browser error about need to enter a number
+Post-Condition:
+- Delete previously created puppy account.
+
+7. Checking for inability to enter letters in the amount field
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+- Click "Withdraw" button from Menu bar.
+- Click "New Withdraw" button in the drop-down menu.
+Step definition:
+- Enter random letters in the "Withdraw amount" field.
+Expected result:
+- The amount field is left empty.
