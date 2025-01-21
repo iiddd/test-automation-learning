@@ -21,6 +21,7 @@ public class SymbolsInsteadNumbersTest extends BaseWebTest {
     private final LoginPage loginPage = new LoginPage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
     private final String WITHDRAW_AMOUNT = "--";
+    private static final String SYMBOLS_IN_WITHDRAW_AMOUNT_FIELD_MESSAGE = "Please enter a number.";
     private final LoginRequestProvider loginRequestProvider = new LoginRequestProvider();
     private final PuppyRequestProvider puppyRequestProvider = new PuppyRequestProvider();
     private static final String COOKIE_NAME = "sessionid";
@@ -41,7 +42,8 @@ public class SymbolsInsteadNumbersTest extends BaseWebTest {
                 .selectPuppyOption()
                 .clickConfirmButton()
                 .checkNewWithdrawPageHeaderIsDisplayed()
-                .checkBrowserErrorMessageInWithdrawAmountFieldExist();
+                .checkErrorEmptyWithdrawAmountFieldExist()
+                .checkErrorMessageInWithdrawAmountFieldIsCorrect(SYMBOLS_IN_WITHDRAW_AMOUNT_FIELD_MESSAGE);
     }
 
     @AfterEach

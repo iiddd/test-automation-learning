@@ -3,7 +3,9 @@ package org.example.puppy.withdraw;
 import io.restassured.http.Cookie;
 import io.restassured.response.ValidatableResponse;
 import org.example.helpers.DbAssertions;
-import org.example.pages.*;
+import org.example.pages.LoginPage;
+import org.example.pages.NewWithdrawPage;
+import org.example.pages.PuppyAccountListPage;
 import org.example.puppy.base.BaseWebTest;
 import org.example.repository.PuppyRepository;
 import org.example.utils.RestUtils;
@@ -19,7 +21,6 @@ public class ChangingAccountBalanceTest extends BaseWebTest {
     private static final String ACCOUNT_NUMBER = UuidGenerator.generateUuid();
     private static final float ACCOUNT_BALANCE = 1;
     private final LoginPage loginPage = new LoginPage();
-    private final BasePage basePage = new BasePage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
     private final float WITHDRAW_AMOUNT = 1;
     private final PuppyAccountListPage puppyAccountListPage = new PuppyAccountListPage();

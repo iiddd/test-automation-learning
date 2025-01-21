@@ -1,6 +1,5 @@
 package org.example.puppy.withdraw;
 
-import org.example.pages.BasePage;
 import org.example.pages.LoginPage;
 import org.example.pages.NewWithdrawPage;
 import org.example.puppy.base.BaseWebTest;
@@ -20,6 +19,7 @@ public class LettersInAmountTest extends BaseWebTest {
                 .clickWithdrawDropdown()
                 .goNewWithdraw();
     }
+
     @Test
     public void lettersInAmountTest() {
         newWithdrawPage

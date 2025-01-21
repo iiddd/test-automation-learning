@@ -1,22 +1,16 @@
 package org.example.puppy.withdraw;
 
-import io.restassured.http.Cookie;
-import io.restassured.response.ValidatableResponse;
 import org.example.pages.LoginPage;
 import org.example.pages.NewWithdrawPage;
 import org.example.puppy.base.BaseWebTest;
-import org.example.repository.PuppyRepository;
-import org.example.utils.RestUtils;
-import org.example.utils.UuidGenerator;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import requstprovider.LoginRequestProvider;
-import requstprovider.PuppyRequestProvider;
 
 public class WithdrawTransactionEmptyFieldsTest extends BaseWebTest {
     private final LoginPage loginPage = new LoginPage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
+    private static final String EMPTY_WITHDRAW_AMOUNT_FIELD_MESSAGE = "Please fill in this field.";
+    private static final String EMPTY_PUPPY_FIELD_MESSAGE = "Please select an item in the list.";
 
     @BeforeEach
     public void preCondition() {
@@ -33,7 +27,9 @@ public class WithdrawTransactionEmptyFieldsTest extends BaseWebTest {
                 .selectPuppyOptionEmpty()
                 .clickConfirmButton()
                 .checkNewWithdrawPageHeaderIsDisplayed()
-                .checkBrowserErrorMessageInWithdrawAmountFieldExist()
-                .checkBrowserErrorMessageInPuppyFieldExist();
+                .checkErrorEmptyWithdrawAmountFieldExist()
+                .checkErrorMessageInWithdrawAmountFieldIsCorrect(EMPTY_WITHDRAW_AMOUNT_FIELD_MESSAGE)
+                .checkErrorEmptyPuppyFieldExist()
+                .checkErrorMessageInPuppyFieldIsCorrect(EMPTY_PUPPY_FIELD_MESSAGE);
     }
 }

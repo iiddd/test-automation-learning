@@ -2,7 +2,6 @@ package org.example.puppy.withdraw;
 
 import io.restassured.http.Cookie;
 import io.restassured.response.ValidatableResponse;
-import org.example.pages.BasePage;
 import org.example.pages.LoginPage;
 import org.example.pages.NewWithdrawPage;
 import org.example.puppy.base.BaseWebTest;
@@ -20,7 +19,6 @@ public class ZeroWithdrawAmountFieldTest extends BaseWebTest {
     private static final String ACCOUNT_NUMBER = UuidGenerator.generateUuid();
     private static final float ACCOUNT_BALANCE = 1;
     private final LoginPage loginPage = new LoginPage();
-    private final BasePage basePage = new BasePage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
     private final float WITHDRAW_AMOUNT = 0;
     private final LoginRequestProvider loginRequestProvider = new LoginRequestProvider();

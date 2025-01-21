@@ -78,13 +78,23 @@ public class NewWithdrawPage extends BasePage {
         return this;
     }
 
-    public NewWithdrawPage checkBrowserErrorMessageInWithdrawAmountFieldExist() {
+    public NewWithdrawPage checkErrorEmptyWithdrawAmountFieldExist() {
         Assertions.assertTrue(Boolean.parseBoolean(getDriver().findElement(WITHDRAW_AMOUNT_FIELD_LOCATOR).getAttribute("required")));
         return this;
     }
 
-    public NewWithdrawPage checkBrowserErrorMessageInPuppyFieldExist() {
+    public NewWithdrawPage checkErrorMessageInWithdrawAmountFieldIsCorrect(String expectedMessage) {
+        Assertions.assertEquals(expectedMessage, getDriver().findElement(WITHDRAW_AMOUNT_FIELD_LOCATOR).getAttribute("validationMessage"));
+        return this;
+    }
+
+    public NewWithdrawPage checkErrorEmptyPuppyFieldExist() {
         Assertions.assertTrue(Boolean.parseBoolean(getDriver().findElement(PUPPY_FIELD_LOCATOR).getAttribute("required")));
+        return this;
+    }
+
+    public NewWithdrawPage checkErrorMessageInPuppyFieldIsCorrect(String expectedMessage) {
+        Assertions.assertEquals(expectedMessage, getDriver().findElement(PUPPY_FIELD_LOCATOR).getAttribute("validationMessage"));
         return this;
     }
 }
