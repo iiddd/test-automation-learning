@@ -138,7 +138,7 @@ public class RegistrationPage extends BasePage {
     }
 
     public RegistrationPage enterRandomUsername(int lenght) {
-        enterUsername(StringUtils.genrateString(lenght));
+        enterUsername(StringUtils.generateAlphanumericString(lenght));
         return this;
     }
 

@@ -9,10 +9,18 @@ public class StringUtils {
 
     private static final String DATA_SET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    public static String genrateString(int lenght) {
-        char[] text = new char[lenght];
-        for (int i = 0; i < lenght; i++) {
-            text[i] = DATA_SET.charAt(new Random().nextInt(DATA_SET.length()));
+    public static String generateAlphanumericString(int length) {
+        return getString(length, DATA_SET);
+    }
+
+    public static String generateAlphabeticalString(int length) {
+        return getString(length, DATA_SET.substring(0, DATA_SET.length() - 10));
+    }
+
+    private static String getString(int length, String dataSet) {
+        char[] text = new char[length];
+        for (int i = 0; i < length; i++) {
+            text[i] = dataSet.charAt(new Random().nextInt(dataSet.length()));
         }
         return new String(text);
     }

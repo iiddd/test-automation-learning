@@ -1,7 +1,9 @@
-package org.example.utils;
+package org.example.repository;
 
 import org.example.models.db.Admin;
 import org.example.models.db.Puppy;
+import org.example.repository.db.NamedParameterStatement;
+import org.junit.jupiter.api.Assertions;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -72,6 +74,13 @@ public class PuppyRepository {
         return puppyList;
     }
 
+    public static float getAccountBalance(int id) {
+        List<Puppy> puppyList = getPuppies().stream().filter(
+                puppyAccount -> puppyAccount.getId() == id).toList();
+        Assertions.assertTrue(puppyList.size() == 1);
+        return puppyList.getFirst().getAccountBalance();
+    }
+
     public static void executeSqlCommand(String sql) {
         try (Connection connection = connect(getDbUrl());
              Statement statement = connection.createStatement()) {
@@ -95,5 +104,39 @@ public class PuppyRepository {
     private static String getDbUrl() {
         Path relativePath = Paths.get(System.getProperty("user.dir"), ".docker", "db.sqlite3");
         return "jdbc:sqlite:" + relativePath.toAbsolutePath();
+    }
+
+    public static void createPuppy(int id, String firstName, String lastName, String address,
+                                   String accountNumber, String mobileNumber, String emailAddress,
+                                   float accountBalance, int createdById) {
+        String SqlQuery = "INSERT INTO app_clients_client ("
+                + "id, first_name, last_name, address, account_number, "
+                + "mobile_number, email_address, account_balance, created_by_id"
+                + ") VALUES (:id, :first_name, :last_name, :address, :account_number, "
+                + ":mobile_number, :email_address, :account_balance, :created_by_id)";
+
+        try (Connection connection = connect(getDbUrl());
+             NamedParameterStatement namedStatement = new NamedParameterStatement(connection, SqlQuery)) {
+
+            namedStatement.setParameter("id", id);
+            namedStatement.setParameter("first_name", firstName);
+            namedStatement.setParameter("last_name", lastName);
+            namedStatement.setParameter("address", address);
+            namedStatement.setParameter("account_number", accountNumber);
+            namedStatement.setParameter("mobile_number", mobileNumber);
+            namedStatement.setParameter("email_address", emailAddress);
+            namedStatement.setParameter("account_balance", accountBalance);
+            namedStatement.setParameter("created_by_id", createdById);
+
+            namedStatement.executeUpdate();
+            System.out.println("Puppy created successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void createPuppy(int id, String accountNumber, float accountBalance) {
+        createPuppy(id, "New", "Puppy", "Country", accountNumber, "1111",
+                "newpuppy@mail.com", accountBalance, 1);
     }
 }
