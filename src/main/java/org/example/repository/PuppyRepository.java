@@ -139,4 +139,10 @@ public class PuppyRepository {
         createPuppy(id, "New", "Puppy", "Country", accountNumber, "1111",
                 "newpuppy@mail.com", accountBalance, 1);
     }
+
+    public static void createPuppy(int id, String firstName, String lastName, String accountNumber, String emailAddress,
+                                   float accountBalance) {
+        createPuppy(id, firstName, lastName, "Country", accountNumber, "1111", emailAddress,
+                accountBalance, 1);
+    }
 }
