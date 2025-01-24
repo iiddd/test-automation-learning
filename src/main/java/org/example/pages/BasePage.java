@@ -14,6 +14,10 @@ public class BasePage {
     private static final By NEW_DEPOSIT_LOCATOR = By.xpath("//a[text()='New Deposit']");
     private static final By PUPPY_ACCOUNTS_DROPDOWN_LOCATOR = By.xpath("//a[@data-target='#collapsePuppies']");
     private static final By PUPPY_ACCOUNT_LIST_LOCATOR = By.xpath("//a[text()='Puppy Account List']");
+    private static final By TRANSFER_LOCATOR = By.xpath("//a[@aria-controls='collapseTransfer']");
+    private static final By TRANSACTION_LIST_LOCATOR = By.xpath("//a[@href='/app_transfers/list']");
+    private static final By NEW_TRANSFER_LOCATOR = By.xpath("//a[@href='/app_transfers/create']");
+
 
     public BasePage clickSystemUsersDropdown() {
         getDriver().findElement(SYSTEM_USERS_DROPDOWN_LOCATOR).click();
@@ -52,6 +56,21 @@ public class BasePage {
 
     public BasePage goPuppyAccountList() {
         getDriver().findElement(PUPPY_ACCOUNT_LIST_LOCATOR).click();
+        return this;
+    }
+
+    public BasePage clickTransferDropdown() {
+        getDriver().findElement(TRANSFER_LOCATOR).click();
+        return this;
+    }
+
+    public BasePage goTransactionList() {
+        getDriver().findElement(TRANSACTION_LIST_LOCATOR).click();
+        return this;
+    }
+
+    public BasePage goNewTransfer() {
+        getDriver().findElement(NEW_TRANSFER_LOCATOR).click();
         return this;
     }
 }
