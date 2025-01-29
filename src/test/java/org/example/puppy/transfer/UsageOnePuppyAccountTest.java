@@ -2,6 +2,8 @@ package org.example.puppy.transfer;
 
 import io.restassured.http.Cookie;
 import io.restassured.response.ValidatableResponse;
+import org.example.helpers.TestDataHelper;
+import org.example.models.db.Puppy;
 import org.example.pages.LoginPage;
 import org.example.pages.TransferTransactionPage;
 import org.example.puppy.base.BaseWebTest;
@@ -16,8 +18,6 @@ import requstprovider.PuppyRequestProvider;
 
 public class UsageOnePuppyAccountTest extends BaseWebTest {
     private static final int ID = 1;
-    private static final String ACCOUNT_NUMBER = UuidGenerator.generateUuid();
-    private static final float ACCOUNT_BALANCE = 1;
     private final LoginPage loginPage = new LoginPage();
     private final TransferTransactionPage transferTransactionPage = new TransferTransactionPage();
     private static final String TRANSFER_AMOUNT = "1";
@@ -27,7 +27,9 @@ public class UsageOnePuppyAccountTest extends BaseWebTest {
 
     @BeforeEach
     public void preCondition() {
-        PuppyRepository.createPuppy(ID, ACCOUNT_NUMBER, ACCOUNT_BALANCE);
+        Puppy puppy = TestDataHelper.createDummyPuppy();
+        puppy.setId(ID);
+        PuppyRepository.createPuppy(puppy);
         loginPage
                 .loginAsAdmin()
                 .clickTransferDropdown()

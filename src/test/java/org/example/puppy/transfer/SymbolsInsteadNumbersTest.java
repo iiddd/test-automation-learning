@@ -2,6 +2,8 @@ package org.example.puppy.transfer;
 
 import io.restassured.http.Cookie;
 import io.restassured.response.ValidatableResponse;
+import org.example.helpers.TestDataHelper;
+import org.example.models.db.Puppy;
 import org.example.pages.LoginPage;
 import org.example.pages.TransferTransactionPage;
 import org.example.puppy.base.BaseWebTest;
@@ -25,7 +27,6 @@ public class SymbolsInsteadNumbersTest extends BaseWebTest {
     private static final String ACCOUNT_NUMBER2 = UuidGenerator.generateUuid();
     private static final String EMAIL1 = "jack@mail.com";
     private static final String EMAIL2 = "spitz@mail.com";
-    private static final float ACCOUNT_BALANCE = 1;
     private final LoginPage loginPage = new LoginPage();
     private final TransferTransactionPage transferTransactionPage = new TransferTransactionPage();
     private static final String TRANSFER_AMOUNT = "+";
@@ -36,8 +37,19 @@ public class SymbolsInsteadNumbersTest extends BaseWebTest {
 
     @BeforeEach
     public void preCondition() {
-        PuppyRepository.createPuppy(ID1, FIRST_NAME1, LAST_NAME1, ACCOUNT_NUMBER1, EMAIL1, ACCOUNT_BALANCE);
-        PuppyRepository.createPuppy(ID2, FIRST_NAME2, LAST_NAME2, ACCOUNT_NUMBER2, EMAIL2, ACCOUNT_BALANCE);
+        Puppy puppy = TestDataHelper.createDummyPuppy();
+        puppy.setId(ID1);
+        puppy.setFirstName(FIRST_NAME1);
+        puppy.setLastName(LAST_NAME1);
+        puppy.setAccountNumber(ACCOUNT_NUMBER1);
+        puppy.setEmailAddress(EMAIL1);
+        PuppyRepository.createPuppy(puppy);
+        puppy.setId(ID2);
+        puppy.setFirstName(FIRST_NAME2);
+        puppy.setLastName(LAST_NAME2);
+        puppy.setAccountNumber(ACCOUNT_NUMBER2);
+        puppy.setEmailAddress(EMAIL2);
+        PuppyRepository.createPuppy(puppy);
         loginPage
                 .loginAsAdmin()
                 .clickTransferDropdown()
