@@ -3,6 +3,8 @@ package org.example.puppy.withdraw;
 import io.restassured.http.Cookie;
 import io.restassured.response.ValidatableResponse;
 import org.example.helpers.DbAssertions;
+import org.example.helpers.TestDataHelper;
+import org.example.models.db.Puppy;
 import org.example.pages.LoginPage;
 import org.example.pages.NewWithdrawPage;
 import org.example.pages.PuppyAccountListPage;
@@ -19,7 +21,6 @@ import requstprovider.PuppyRequestProvider;
 public class ChangingAccountBalanceTest extends BaseWebTest {
     private static final int ID = 1;
     private static final String ACCOUNT_NUMBER = UuidGenerator.generateUuid();
-    private static final float ACCOUNT_BALANCE = 1;
     private final LoginPage loginPage = new LoginPage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
     private final float WITHDRAW_AMOUNT = 1;
@@ -30,7 +31,10 @@ public class ChangingAccountBalanceTest extends BaseWebTest {
 
     @BeforeEach
     public void preCondition() {
-        PuppyRepository.createPuppy(ID, ACCOUNT_NUMBER, ACCOUNT_BALANCE);
+        Puppy puppy = TestDataHelper.createDummyPuppy();
+        puppy.setId(ID);
+        puppy.setAccountNumber(ACCOUNT_NUMBER);
+        PuppyRepository.createPuppy(puppy);
         loginPage
                 .loginAsAdmin()
                 .clickWithdrawDropdown()
