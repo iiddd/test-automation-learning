@@ -2,6 +2,8 @@ package org.example.puppy.transfer;
 
 import io.restassured.http.Cookie;
 import io.restassured.response.ValidatableResponse;
+import org.example.helpers.TestDataHelper;
+import org.example.models.db.Puppy;
 import org.example.pages.*;
 import org.example.puppy.base.BaseWebTest;
 import org.example.repository.PuppyRepository;
@@ -16,7 +18,6 @@ import requstprovider.PuppyRequestProvider;
 public class NewTransferHappyFlowTest extends BaseWebTest {
 
     private static final int ID1 = 1;
-    private static final float ACCOUNT_BALANCE = 1;
     private static final String FIRST_NAME1 = "Jack";
     private static final String LAST_NAME1 = "Russell";
     private static final int ID2 = 2;
@@ -37,8 +38,19 @@ public class NewTransferHappyFlowTest extends BaseWebTest {
 
     @BeforeEach
     public void preCondition() {
-        PuppyRepository.createPuppy(ID1, FIRST_NAME1, LAST_NAME1, ACCOUNT_NUMBER1, EMAIL1, ACCOUNT_BALANCE);
-        PuppyRepository.createPuppy(ID2, FIRST_NAME2, LAST_NAME2, ACCOUNT_NUMBER2, EMAIL2, ACCOUNT_BALANCE);
+        Puppy puppy = TestDataHelper.createDummyPuppy();
+        puppy.setId(ID1);
+        puppy.setFirstName(FIRST_NAME1);
+        puppy.setLastName(LAST_NAME1);
+        puppy.setAccountNumber(ACCOUNT_NUMBER1);
+        puppy.setEmailAddress(EMAIL1);
+        PuppyRepository.createPuppy(puppy);
+        puppy.setId(ID2);
+        puppy.setFirstName(FIRST_NAME2);
+        puppy.setLastName(LAST_NAME2);
+        puppy.setAccountNumber(ACCOUNT_NUMBER2);
+        puppy.setEmailAddress(EMAIL2);
+        PuppyRepository.createPuppy(puppy);
         loginPage
                 .loginAsAdmin()
                 .clickTransferDropdown()
