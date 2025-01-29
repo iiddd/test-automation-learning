@@ -2,12 +2,13 @@ package org.example.puppy.withdraw;
 
 import io.restassured.http.Cookie;
 import io.restassured.response.ValidatableResponse;
+import org.example.helpers.TestDataHelper;
+import org.example.models.db.Puppy;
 import org.example.pages.LoginPage;
 import org.example.pages.NewWithdrawPage;
 import org.example.puppy.base.BaseWebTest;
 import org.example.repository.PuppyRepository;
 import org.example.utils.RestUtils;
-import org.example.utils.UuidGenerator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,8 +17,6 @@ import requstprovider.PuppyRequestProvider;
 
 public class SymbolsInsteadNumbersTest extends BaseWebTest {
     private static final int ID = 1;
-    private static final String ACCOUNT_NUMBER = UuidGenerator.generateUuid();
-    private static final float ACCOUNT_BALANCE = 1;
     private final LoginPage loginPage = new LoginPage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
     private final String WITHDRAW_AMOUNT = "--";
@@ -28,7 +27,9 @@ public class SymbolsInsteadNumbersTest extends BaseWebTest {
 
     @BeforeEach
     public void preCondition() {
-        PuppyRepository.createPuppy(ID, ACCOUNT_NUMBER, ACCOUNT_BALANCE);
+        Puppy puppy = TestDataHelper.createDummyPuppy();
+        puppy.setId(ID);
+        PuppyRepository.createPuppy(puppy);
         loginPage
                 .loginAsAdmin()
                 .clickWithdrawDropdown()

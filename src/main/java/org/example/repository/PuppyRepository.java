@@ -106,9 +106,7 @@ public class PuppyRepository {
         return "jdbc:sqlite:" + relativePath.toAbsolutePath();
     }
 
-    public static void createPuppy(int id, String firstName, String lastName, String address,
-                                   String accountNumber, String mobileNumber, String emailAddress,
-                                   float accountBalance, int createdById) {
+    public static void createPuppy(Puppy puppy) {
         String SqlQuery = "INSERT INTO app_clients_client ("
                 + "id, first_name, last_name, address, account_number, "
                 + "mobile_number, email_address, account_balance, created_by_id"
@@ -118,25 +116,20 @@ public class PuppyRepository {
         try (Connection connection = connect(getDbUrl());
              NamedParameterStatement namedStatement = new NamedParameterStatement(connection, SqlQuery)) {
 
-            namedStatement.setParameter("id", id);
-            namedStatement.setParameter("first_name", firstName);
-            namedStatement.setParameter("last_name", lastName);
-            namedStatement.setParameter("address", address);
-            namedStatement.setParameter("account_number", accountNumber);
-            namedStatement.setParameter("mobile_number", mobileNumber);
-            namedStatement.setParameter("email_address", emailAddress);
-            namedStatement.setParameter("account_balance", accountBalance);
-            namedStatement.setParameter("created_by_id", createdById);
+            namedStatement.setParameter("id", puppy.getId());
+            namedStatement.setParameter("first_name", puppy.getFirstName());
+            namedStatement.setParameter("last_name", puppy.getLastName());
+            namedStatement.setParameter("address", puppy.getAddress());
+            namedStatement.setParameter("account_number", puppy.getAccountNumber());
+            namedStatement.setParameter("mobile_number", puppy.getMobileNumber());
+            namedStatement.setParameter("email_address", puppy.getEmailAddress());
+            namedStatement.setParameter("account_balance", puppy.getAccountBalance());
+            namedStatement.setParameter("created_by_id", puppy.getCreatedById());
 
             namedStatement.executeUpdate();
             System.out.println("Puppy created successfully.");
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void createPuppy(int id, String accountNumber, float accountBalance) {
-        createPuppy(id, "New", "Puppy", "Country", accountNumber, "1111",
-                "newpuppy@mail.com", accountBalance, 1);
     }
 }
