@@ -17,6 +17,10 @@ public class StringUtils {
         return getString(length, DATA_SET.substring(0, DATA_SET.length() - 10));
     }
 
+    public static String generateNinesString(int length) {
+        return getString(length, "9");
+    }
+
     private static String getString(int length, String dataSet) {
         char[] text = new char[length];
         for (int i = 0; i < length; i++) {
