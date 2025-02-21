@@ -18,7 +18,7 @@ public class DriverHolder {
                 .addArguments("--lang=en-GB");
 
         driverThreadLocal.set(new ChromeDriver(options));
-        System.out.println("Initialized WebDriver for thread: " + Thread.currentThread().getId());
+        System.out.println("Initialized WebDriver for thread: " + Thread.currentThread().threadId());
 
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
@@ -29,7 +29,7 @@ public class DriverHolder {
 
     public static void killDriver() {
         if (getDriver() != null) {
-            System.out.println("Closing WebDriver for thread: " + Thread.currentThread().getId());
+            System.out.println("Closing WebDriver for thread: " + Thread.currentThread().threadId());
             getDriver().quit();
             driverThreadLocal.remove();
         }
