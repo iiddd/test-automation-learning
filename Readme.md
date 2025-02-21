@@ -14,8 +14,8 @@
 - Login test
 
 ## Run commands:
-- ``mvn clean install`` to run tests
-- ``mvn surefire-report:report`` to run tests and generate surefire report
+- ``mvn clean test`` to run tests
+- ``mvn clean surefire-report:report`` to run tests and generate surefire report
 
 ## Reports:
 - Maven-surefire-report-plugin is used as a reporting tool
