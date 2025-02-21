@@ -9,24 +9,29 @@ import java.time.Duration;
 
 public class DriverHolder {
 
-    private static WebDriver driver;
+    private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
 
     public static void initDriver() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(
-                new ChromeOptions()
-                        .addArguments("--disable-search-engine-choice-screen")
-                        .addArguments("--lang=en-GB")
-                        .addArguments("--headless")
-        );
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        ChromeOptions options = new ChromeOptions()
+                .addArguments("--disable-search-engine-choice-screen")
+                .addArguments("--lang=en-GB");
+
+        driverThreadLocal.set(new ChromeDriver(options));
+        System.out.println("Initialized WebDriver for thread: " + Thread.currentThread().getId());
+
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     public static WebDriver getDriver() {
-        return driver;
+        return driverThreadLocal.get();
     }
 
     public static void killDriver() {
-        driver.quit();
+        if (getDriver() != null) {
+            System.out.println("Closing WebDriver for thread: " + Thread.currentThread().getId());
+            getDriver().quit();
+            driverThreadLocal.remove();
+        }
     }
 }
