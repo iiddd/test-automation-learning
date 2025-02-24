@@ -1,0 +1,163 @@
+1) Create system user happy flow.
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+- Click «System Users» button from Menu bar.
+- In the additional menu, press the "New System User" button.
+- Redirected to «Create System User» page.
+Step definition:
+- Enter «admin0000» in the «Username» field.
+- Enter "Ssmog790" in the "Password" and "Repeat password" fields.
+- Click «Confirm» button.
+Expected result:
+- Redirected to «System User List» page.
+- Make sure the account has been created.
+Post-condition:
+- Delete a previously created new user.
+
+2) Creating a system user with empty fields.
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+- Click «System Users» button from Menu bar.
+- In the additional menu, press the "New System User" button.
+- Redirected to «Create System User» page.
+Step definition:
+- Clear the "Username", "Password", "Repeat password" fields.
+- Click «Confirm» button.
+Expected result:
+- Stay on «Create System User» page.
+- Browser errors about unfilled fields exist.
+- The browser error message contains correct text.
+
+3) Creating a new user with a password of only numbers.
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+- Click «System Users» button from Menu bar.
+- In the additional menu, press the "New System User" button.
+- Redirected to «Create System User» page.
+Step definition:
+- Enter «admin0000» in the «Username» field.
+- Enter «1234567890» in the "Password" and "Repeat password" fields.
+- Click «Confirm» button.
+Expected result:
+- Stay on «Create System User» page.
+- Error message «This password is too common.» appeared.
+- Error message «This password is entirely numeric.» appeared.
+
+4) Creating a new user where username and password have the same text.
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+- Click «System Users» button from Menu bar.
+- In the additional menu, press the "New System User" button.
+- Redirected to «Create System User» page.
+Step definition:
+- Enter «admin0000» in the «Username», «Password», «Repeat password» fields.
+- Click «Confirm» button.
+Expected result:
+- Stay on «Create System User» page.
+- Error message «The password is too similar to the username.» appeared.
+
+5) Creating a new user with a small password.
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+- Click «System Users» button from Menu bar.
+- In the additional menu, press the "New System User" button.
+- Redirected to «Create System User» page.
+Step definition:
+- Enter «admin0000» in the «Username» field.
+- Enter «smog» in the "Password" and "Repeat password" fields.
+- Click «Confirm» button.
+Expected result:
+- Stay on «Create System User» page.
+- Error message «This password is too short. It must contain at least 8 characters.» appeared.
+
+6) Creating a new user with different text in the password fields.
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+- Click «System Users» button from Menu bar.
+- In the additional menu, press the "New System User" button.
+- Redirected to «Create System User» page.
+Step definition:
+- Enter «admin0000» in the «Username» field.
+- Enter «Ssmog790» in the «Password» field.
+- Enter «Ssmog890» in the «Repeat password» field.
+- Click «Confirm» button.
+Expected result:
+- Stay on «Create System User» page.
+- Error message «The two password fields didn’t match.» appeared.
+
+7) Creating a new user with a username that already exists.
+Pre-condition:
+- Creating a new user with «admin0000» username.
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+- Click «System Users» button from Menu bar.
+- In the additional menu, press the "New System User" button.
+- Redirected to «Create System User» page.
+Step definition:
+- Enter «admin0000» in the «Username» field.
+- Enter "Ssmog790" in the "Password" and "Repeat password" fields.
+- Click «Confirm» button.
+Expected result:
+- Stay on «Create System User» page.
+- Error message « A user with that username already exists. » appeared.
+
+8) Creating a new user with illegal characters in username.
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+- Click «System Users» button from Menu bar.
+- In the additional menu, press the "New System User" button.
+- Redirected to «Create System User» page.
+Step definition:
+- Enter «admin^» in the «Username» field.
+- Enter «Ssmog790» in the "Password" and "Repeat password" fields.
+- Click «Confirm» button.
+Expected result:
+- Stay on «Create System User» page.
+- Error message «Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.» appeared.
+
+9) Creating a new user with a username exceeding 150 characters.
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+- Click «System Users» button from Menu bar.
+- In the additional menu, press the "New System User" button.
+- Redirected to «Create System User» page.
+Step definition:
+- Enter a random text of 151 characters in the "Username" field.
+- Enter «Ssmog790» in the "Password" and "Repeat password" fields.
+- Click «Confirm» button.
+Expected result:
+- Stay on «Create System User» page.
+- Error message « Ensure this value has at most 150 characters (it has 151).» appeared.
+
+10) Creating a user with a common password.
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+- Click «System Users» button from Menu bar.
+- In the additional menu, press the "New System User" button.
+- Redirected to «Create System User» page.
+Step definition:
+- Enter «admin0000» in the «Username» field.
+-  Enter «password» in the "Password" and "Repeat password" fields.
+- Click «Confirm» button.
+Expected result:
+- Stay on «Create System User» page.
+- Error message « This password is too common.» appeared.

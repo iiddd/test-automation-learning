@@ -1,0 +1,37 @@
+1) Logout from account.
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+Step definition:
+- Click on the User Dropdown button.
+- In the dropdown menu, click the "Logout" button.
+- Click the "Logout" button in a pop-up window.
+Expected result:
+- Redirected to login page.
+
+2) Cancel Logout.
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+Step definition:
+- Click on the User Dropdown button.
+- In the dropdown menu, click the "Logout" button.
+- Click the "Cancel" button in a pop-up window.
+Expected result:
+- Make sure the Logout window is closed.
+- Stay on dashboard page.
+
+3) Cancel Logout using close button.
+Pre-condition:
+- Navigate to Puppy Bank login page.
+- Login as admin.
+- Navigate to dashboard page.
+Step definition:
+- Click on the User Dropdown button.
+- In the dropdown menu, click the "Logout" button.
+- Click the close button in a pop-up window.
+Expected result:
+- Make sure the Logout window is closed.
+- Stay on dashboard page.
