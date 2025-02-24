@@ -5,10 +5,9 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 
 import static org.example.core.DriverHolder.getDriver;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class NewWithdrawPage extends BasePage {
-    private static final By TRANSACTION_REFERENSE_FIELD_LOCATOR = By.xpath("//input[@name='transaction_reference']");
+    private static final By TRANSACTION_REFERENCE_FIELD_LOCATOR = By.xpath("//input[@name='transaction_reference']");
     private static final By WITHDRAW_AMOUNT_FIELD_LOCATOR = By.xpath("//input[@name='withdraw_amount']");
     private static final By PUPPY_OPTION_LOCATOR = By.xpath("//option[text()='New Puppy']");
     private static final By CONFIRM_BUTTON_LOCATOR = By.xpath("//span[text()='Confirm']");
@@ -20,7 +19,7 @@ public class NewWithdrawPage extends BasePage {
     private static final By PUPPY_FIELD_LOCATOR = By.xpath("//select[@id='id_puppy']");
 
     public String getTransactionReference() {
-        return getDriver().findElement(TRANSACTION_REFERENSE_FIELD_LOCATOR).getAttribute(VALUE_ATTRIBUTE_NAME);
+        return getDriver().findElement(TRANSACTION_REFERENCE_FIELD_LOCATOR).getAttribute(VALUE_ATTRIBUTE_NAME);
     }
 
     public NewWithdrawPage enterWithdrawAmount(float input) {

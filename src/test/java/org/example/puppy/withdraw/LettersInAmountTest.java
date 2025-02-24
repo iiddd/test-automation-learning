@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class LettersInAmountTest extends BaseWebTest {
     private final LoginPage loginPage = new LoginPage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
-    private static final int RANDOM_AMOUNT_LENGHT = 2;
+    private static final int RANDOM_AMOUNT_LENGTH = 2;
 
 
     @BeforeEach
@@ -23,7 +23,7 @@ public class LettersInAmountTest extends BaseWebTest {
     @Test
     public void lettersInAmountTest() {
         newWithdrawPage
-                .enterRandomLettersInWithdrawAmountField(RANDOM_AMOUNT_LENGHT)
+                .enterRandomLettersInWithdrawAmountField(RANDOM_AMOUNT_LENGTH)
                 .checkWithdrawAmountFieldIsEmpty();
     }
 }

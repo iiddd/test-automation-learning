@@ -18,4 +18,19 @@ public class TestDataHelper {
         puppy.setCreatedById(1);
         return puppy;
     }
+
+    public static Puppy createPuppyForDeposit() {
+        Puppy puppy = new Puppy();
+        puppy.setId(34);
+        puppy.setFirstName("Deposit");
+        puppy.setLastName("Puppy");
+        puppy.setAddress("DogHome1");
+        puppy.setAccountNumber(UuidGenerator.generateUuid());
+        puppy.setMobileNumber("555555");
+        puppy.setEmailAddress("DepositPuppy@dog.home");
+        puppy.setAccountBalance(0);
+        puppy.setCreatedById(1);
+        return puppy;
+    }
+
 }
