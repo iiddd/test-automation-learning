@@ -13,4 +13,5 @@ public class DashboardPage extends BasePage {
         Assertions.assertTrue(getDriver().findElement(DASHBOARD_TITLE_LOCATOR).isDisplayed());
         return this;
     }
+
 }

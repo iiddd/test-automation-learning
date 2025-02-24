@@ -11,7 +11,7 @@ public class Admin {
     private String password;
     private String firstName;
     private String lastName;
-    private String emailAddress;
+    private String email;
     private String lastLogin;
     private String dateJoined;
     private Boolean isSuperUser;
