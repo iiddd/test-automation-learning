@@ -1,4 +1,4 @@
-1) New transfer happy flow +++++++
+1) New transfer happy flow
 Pre-condition:
 - Create two puppy accounts with balance "1".
 - Navigate to Puppy Bank login page.
@@ -6,7 +6,7 @@ Pre-condition:
 - Navigate to dashboard page.
 - Click «Transfer» button from Menu bar.
 - In the additional menu click «New Transfer» button.
-- Redirected to «Transfer Transaction» page.
+- User is redirected to «Transfer Transaction» page.
 Step definition:
 - Remember text in the "Transaction reference" field.
 - Enter «1» in the line «Transfer amount».
@@ -14,12 +14,12 @@ Step definition:
 - Select option the second previously created puppy in the "To puppy" field.
 - Click «Confirm» button.
 Expected result:
-- Redirected to «Transfer Transaction List» page.
+- User is redirected to «Transfer Transaction List» page.
 - On the "Transfer Transaction List" page a new transfer has appeared with the previously remembered transaction reference.
 Post-condition:
 - Delete two previously created puppy accounts.
 
-2) New transfer with transfer amount "0" ++++++++++
+2) New transfer with transfer amount "0"
 Pre-condition:
 - Create two puppy accounts with balance "1".
 - Navigate to Puppy Bank login page.
@@ -27,20 +27,19 @@ Pre-condition:
 - Navigate to dashboard page.
 - Click «Transfer» button from Menu bar.
 - In the additional menu click «New Transfer» button.
-- Redirected to «Transfer Transaction» page.
+- User is redirected to «Transfer Transaction» page.
 Step definition:
 - Enter «0» in the line «Transfer amount».
 - Select option the first previously created puppy in the "From puppy" field.
 - Select option the second previously created puppy in the "To puppy" field.
 - Click «Confirm» button.
 Expected result:
-- Stay on «Transfer Transaction» page.
 - Error message «The transfer amount should be more than zero» appeared.
+- User stays on the «Transfer Transaction» page.
 Post-condition:
 - Delete two previously created puppy accounts.
 
-
-3) Creating a transfer using one puppy account ++++++++++
+3) Creating a transfer using one puppy account
 Pre-condition:
 - Create puppy account with balance "1".
 - Navigate to Puppy Bank login page.
@@ -48,18 +47,18 @@ Pre-condition:
 - Navigate to dashboard page.
 - Click «Transfer» button from Menu bar.
 - In the additional menu click «New Transfer» button.
-- Redirected to «Transfer Transaction» page.
+- User is redirected to «Transfer Transaction» page.
 Step definition:
 - Enter «1» in the line «Transfer amount».
 - In the "From puppy" and "To puppy" fields, select the same puppy that was created earlier.
 - Click «Confirm» button.
 Expected result:
-- Stay on «Transfer Transaction» page.
 - Error message «The source and destination puppy cannot be the same» appeared.
+- User stays on the «Transfer Transaction» page.
 Post-condition:
 - Delete the previously created puppy account.
 
-4) Exceeding the transfer amount +++++++++++++
+4) Exceeding the transfer amount
 Pre-condition:
 - Create two puppy accounts with balance "1".
 - Navigate to Puppy Bank login page.
@@ -67,37 +66,37 @@ Pre-condition:
 - Navigate to dashboard page.
 - Click «Transfer» button from Menu bar.
 - In the additional menu click «New Transfer» button.
-- Redirected to «Transfer Transaction» page.
+- User is redirected to «Transfer Transaction» page.
 Step definition:
 - Enter «2» in the line «Transfer amount».
 - Select option the first previously created puppy in the "From puppy" field.
 - Select option the second previously created puppy in the "To puppy" field.
 - Click «Confirm» button.
 Expected result:
-- Stay on «Transfer Transaction» page.
 - Error message «The transfer amount cannot be more than the account balance» appeared.
+- User stays on the «Transfer Transaction» page.
 Post-condition:
 - Delete the previously created puppy accounts.
 
-5) Transfer transaction with empty fields. +++++++++
+5) Transfer transaction with empty fields.
 Pre-condition:
 - Navigate to Puppy Bank login page.
 - Login as admin.
 - Navigate to dashboard page.
 - Click «Transfer» button from Menu bar.
 - In the additional menu click «New Transfer» button.
-- Redirected to «Transfer Transaction» page.
+- User is redirected to «Transfer Transaction» page.
 Step definition:
 - Clear "Transfer amount" field.
 - Select option "---------" in the "From puppy" field.
 - Select option "---------" in the "To puppy" field.
 - Click «Confirm» button.
 Expected result:
-- Stay on «Transfer Transaction» page.
 - Browser errors about unfilled fields exist.
 - The browser error message contains correct text.
+- User stays on the «Transfer Transaction» page.
 
-6) Checking the change in accounts balance when making a transfer transaction. ++++++++++++++++++
+6) Checking the change in accounts balance when making a transfer transaction.
 Pre-condition:
 - Create two puppy accounts with balance "1".
 - Navigate to Puppy Bank login page.
@@ -105,7 +104,7 @@ Pre-condition:
 - Navigate to dashboard page.
 - Click «Transfer» button from Menu bar.
 - In the additional menu click «New Transfer» button.
-- Redirected to «Transfer Transaction» page.
+- User is redirected to «Transfer Transaction» page.
 Step definition:
 - Create a new transfer transaction between previously created puppies with Transfer amount "1".
 - Verify that the balance of both accounts has changed.
@@ -122,15 +121,15 @@ Pre-condition:
 - Navigate to dashboard page.
 - Click «Transfer» button from Menu bar.
 - In the additional menu click «New Transfer» button.
-- Redirected to «Transfer Transaction» page.
+- User is redirected to «Transfer Transaction» page.
 Step definition:
 - Enter «+» in the line «Transfer amount».
 - Select option the first previously created puppy in the "From puppy" field.
 - Select option the second previously created puppy in the "To puppy" field.
 - Click «Confirm» button.
 Expected result:
-- Stay on «Transfer Transaction» page.
 - Browser errors about unfilled fields exist.
 - The browser error message contains correct text.
+- User stays on the «Transfer Transaction» page.
 Post-condition:
 - Delete two previously created puppy accounts.
