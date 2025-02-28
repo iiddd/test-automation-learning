@@ -8,7 +8,7 @@ Step definition:
 - In the dropdown menu, click the "Logout" button.
 - Click the "Logout" button in a pop-up window.
 Expected result:
-- The user is redirected to the login page.
+- User is redirected to Login page.
 
 2) Cancel Logout.
 Pre-condition:
@@ -21,7 +21,7 @@ Step definition:
 - Click the "Cancel" button in a pop-up window.
 Expected result:
 - Make sure the Logout window is closed.
-- The user remains on the dashboard page.
+- User stays on Dashboard page.
 
 3) Cancel Logout using close button.
 Pre-condition:
@@ -34,4 +34,4 @@ Step definition:
 - Click the close button in a pop-up window.
 Expected result:
 - Make sure the Logout window is closed.
-- Stay on dashboard page.
+- User stays on Dashboard page.
