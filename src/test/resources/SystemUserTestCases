@@ -5,7 +5,7 @@ Pre-condition:
 - Navigate to dashboard page.
 - Click «System Users» button from Menu bar.
 - In the additional menu, press the "New System User" button.
-- Redirected to «Create System User» page.
+- The user is redirected to the "Create System User" page.
 Step definition:
 - Enter «admin0000» in the «Username» field.
 - Enter "Ssmog790" in the "Password" and "Repeat password" fields.
@@ -28,7 +28,7 @@ Step definition:
 - Clear the "Username", "Password", "Repeat password" fields.
 - Click «Confirm» button.
 Expected result:
-- Stay on «Create System User» page.
+- The user remains on the "Create System User" page.
 - Browser errors about unfilled fields exist.
 - The browser error message contains correct text.
 
@@ -45,7 +45,7 @@ Step definition:
 - Enter «1234567890» in the "Password" and "Repeat password" fields.
 - Click «Confirm» button.
 Expected result:
-- Stay on «Create System User» page.
+- The user remains on the "Create System User" page.
 - Error message «This password is too common.» appeared.
 - Error message «This password is entirely numeric.» appeared.
 
@@ -61,10 +61,10 @@ Step definition:
 - Enter «admin0000» in the «Username», «Password», «Repeat password» fields.
 - Click «Confirm» button.
 Expected result:
-- Stay on «Create System User» page.
+- The user remains on the "Create System User" page.
 - Error message «The password is too similar to the username.» appeared.
 
-5) Creating a new user with a small password.
+5) Creating a new user with a short password.
 Pre-condition:
 - Navigate to Puppy Bank login page.
 - Login as admin.
@@ -77,7 +77,7 @@ Step definition:
 - Enter «smog» in the "Password" and "Repeat password" fields.
 - Click «Confirm» button.
 Expected result:
-- Stay on «Create System User» page.
+- The user remains on the "Create System User" page.
 - Error message «This password is too short. It must contain at least 8 characters.» appeared.
 
 6) Creating a new user with different text in the password fields.
@@ -94,7 +94,7 @@ Step definition:
 - Enter «Ssmog890» in the «Repeat password» field.
 - Click «Confirm» button.
 Expected result:
-- Stay on «Create System User» page.
+- The user remains on the "Create System User" page.
 - Error message «The two password fields didn’t match.» appeared.
 
 7) Creating a new user with a username that already exists.
@@ -111,7 +111,7 @@ Step definition:
 - Enter "Ssmog790" in the "Password" and "Repeat password" fields.
 - Click «Confirm» button.
 Expected result:
-- Stay on «Create System User» page.
+- The user remains on the "Create System User" page.
 - Error message « A user with that username already exists. » appeared.
 
 8) Creating a new user with illegal characters in username.
@@ -127,7 +127,7 @@ Step definition:
 - Enter «Ssmog790» in the "Password" and "Repeat password" fields.
 - Click «Confirm» button.
 Expected result:
-- Stay on «Create System User» page.
+- The user remains on the "Create System User" page.
 - Error message «Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.» appeared.
 
 9) Creating a new user with a username exceeding 150 characters.
@@ -143,7 +143,7 @@ Step definition:
 - Enter «Ssmog790» in the "Password" and "Repeat password" fields.
 - Click «Confirm» button.
 Expected result:
-- Stay on «Create System User» page.
+- The user remains on the "Create System User" page.
 - Error message « Ensure this value has at most 150 characters (it has 151).» appeared.
 
 10) Creating a user with a common password.
@@ -159,5 +159,5 @@ Step definition:
 -  Enter «password» in the "Password" and "Repeat password" fields.
 - Click «Confirm» button.
 Expected result:
-- Stay on «Create System User» page.
+- The user remains on the "Create System User" page.
 - Error message « This password is too common.» appeared.
