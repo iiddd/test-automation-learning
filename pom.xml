@@ -24,6 +24,8 @@
         <sqlite-jdbc.version>3.47.2.0</sqlite-jdbc.version>
         <allure.version>2.29.1</allure.version>
         <allure.maven.version>2.15.2</allure.maven.version>
+        <cucumber.version>7.21.1</cucumber.version>
+        <junit-platform.version>1.11.2</junit-platform.version>
         <surefire.report.directory>${project.build.directory}/surefire-reports</surefire.report.directory>
         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
     </properties>
@@ -33,6 +35,12 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>${junit-platform.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -69,6 +77,22 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit5</artifactId>
             <version>${allure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
