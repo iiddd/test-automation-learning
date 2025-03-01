@@ -33,7 +33,6 @@ public class LoginStepDefinition {
 
     @Then("The User is on Dashboard page")
     public void theUserIsOnDashboardPage() {
-        Assertions.fail();
         dashboardPage.checkDashboardIsDisplayed();
     }
 }
