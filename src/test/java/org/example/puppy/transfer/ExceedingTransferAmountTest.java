@@ -18,16 +18,16 @@ import requstprovider.PuppyRequestProvider;
 
 public class ExceedingTransferAmountTest extends BaseWebTest {
 
-    private static final int ID1 = 1;
-    private static final String FIRST_NAME1 = "Jack";
-    private static final String LAST_NAME1 = "Russell";
-    private static final String ACCOUNT_NUMBER1 = UuidGenerator.generateUuid();
-    private static final String EMAIL1 = "jack@mail.com";
-    private static final int ID2 = 2;
-    private static final String FIRST_NAME2 = "Spitz";
-    private static final String LAST_NAME2 = "Pomeranian";
-    private static final String ACCOUNT_NUMBER2 = UuidGenerator.generateUuid();
-    private static final String EMAIL2 = "spitz@mail.com";
+    private static final int ID_SENDER = 12;
+    private static final String FIRST_NAME_SENDER = "Jack";
+    private static final String LAST_NAME_SENDER = "Russell";
+    private static final String ACCOUNT_NUMBER_SENDER = UuidGenerator.generateUuid();
+    private static final String EMAIL_SENDER = "jack@mail.com";
+    private static final int ID_ACCEPTING = 22;
+    private static final String FIRST_NAME_ACCEPTING = "Spitz";
+    private static final String LAST_NAME_ACCEPTING = "Pomeranian";
+    private static final String ACCOUNT_NUMBER_ACCEPTING = UuidGenerator.generateUuid();
+    private static final String EMAIL_ACCEPTING = "spitz@mail.com";
     private static final LoginPage loginPage = new LoginPage();
     private final TransferTransactionPage transferTransactionPage = new TransferTransactionPage();
     private static final String TRANSFER_AMOUNT = "2";
@@ -38,17 +38,17 @@ public class ExceedingTransferAmountTest extends BaseWebTest {
     @BeforeEach
     public void preCondition() {
         Puppy puppy = TestDataHelper.createDummyPuppy();
-        puppy.setId(ID1);
-        puppy.setFirstName(FIRST_NAME1);
-        puppy.setLastName(LAST_NAME1);
-        puppy.setAccountNumber(ACCOUNT_NUMBER1);
-        puppy.setEmailAddress(EMAIL1);
+        puppy.setId(ID_SENDER);
+        puppy.setFirstName(FIRST_NAME_SENDER);
+        puppy.setLastName(LAST_NAME_SENDER);
+        puppy.setAccountNumber(ACCOUNT_NUMBER_SENDER);
+        puppy.setEmailAddress(EMAIL_SENDER);
         PuppyRepository.createPuppy(puppy);
-        puppy.setId(ID2);
-        puppy.setFirstName(FIRST_NAME2);
-        puppy.setLastName(LAST_NAME2);
-        puppy.setAccountNumber(ACCOUNT_NUMBER2);
-        puppy.setEmailAddress(EMAIL2);
+        puppy.setId(ID_ACCEPTING);
+        puppy.setFirstName(FIRST_NAME_ACCEPTING);
+        puppy.setLastName(LAST_NAME_ACCEPTING);
+        puppy.setAccountNumber(ACCOUNT_NUMBER_ACCEPTING);
+        puppy.setEmailAddress(EMAIL_ACCEPTING);
         PuppyRepository.createPuppy(puppy);
         loginPage
                 .loginAsAdmin()
@@ -72,7 +72,7 @@ public class ExceedingTransferAmountTest extends BaseWebTest {
         ValidatableResponse response = RestUtils.post(loginRequestProvider.prepareLoginRequest());
         String cookieValue = response.extract().cookie(COOKIE_NAME);
         Cookie cookie = new Cookie.Builder(COOKIE_NAME, cookieValue).build();
-        RestUtils.post(puppyRequestProvider.deletePuppyAccount(ID1, cookie));
-        RestUtils.post(puppyRequestProvider.deletePuppyAccount(ID2, cookie));
+        RestUtils.post(puppyRequestProvider.deletePuppyAccount(ID_SENDER, cookie));
+        RestUtils.post(puppyRequestProvider.deletePuppyAccount(ID_ACCEPTING, cookie));
     }
 }

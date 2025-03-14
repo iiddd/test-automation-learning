@@ -13,5 +13,5 @@ public class TransferTransaction {
     private String fromPuppyAccount;
     private String toPuppyAccount;
     private float transferAmount;
-    private String 	currency;
+    private String currency;
 }
