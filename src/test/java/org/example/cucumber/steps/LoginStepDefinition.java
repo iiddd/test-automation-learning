@@ -34,4 +34,14 @@ public class LoginStepDefinition {
     public void theUserIsOnDashboardPage() {
         dashboardPage.checkDashboardIsDisplayed();
     }
+
+    @When("The User leaves the username field empty")
+    public void theUserLeavesTheUsernameFieldEmpty() {
+        loginPage.clearUsername();
+    }
+
+    @Then("The User stays on the Login page")
+    public void theUserStaysOnTheLoginPage() {
+        loginPage.checkLoginPageTitleIsDisplayed();
+    }
 }
