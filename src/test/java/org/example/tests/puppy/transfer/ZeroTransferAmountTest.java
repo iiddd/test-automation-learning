@@ -1,4 +1,4 @@
-package org.example.puppy.transfer;
+package org.example.tests.puppy.transfer;
 
 import io.restassured.http.Cookie;
 import io.restassured.response.ValidatableResponse;
@@ -6,7 +6,7 @@ import org.example.helpers.TestDataHelper;
 import org.example.models.db.Puppy;
 import org.example.pages.LoginPage;
 import org.example.pages.TransferTransactionPage;
-import org.example.puppy.base.BaseWebTest;
+import org.example.tests.puppy.base.BaseWebTest;
 import org.example.repository.PuppyRepository;
 import org.example.utils.RestUtils;
 import org.example.utils.UuidGenerator;
@@ -16,12 +16,13 @@ import org.junit.jupiter.api.Test;
 import requstprovider.LoginRequestProvider;
 import requstprovider.PuppyRequestProvider;
 
-public class SymbolsInsteadNumbersTest extends BaseWebTest {
-    private static final int ID_SENDER = 14;
-    private static final int ID_ACCEPTING = 24;
+public class ZeroTransferAmountTest extends BaseWebTest {
+
+    private static final int ID_SENDER = 16;
     private static final String FIRST_NAME_SENDER = "Jack";
-    private static final String FIRST_NAME_ACCEPTING = "Spitz";
     private static final String LAST_NAME_SENDER = "Russell";
+    private static final int ID_ACCEPTING = 26;
+    private static final String FIRST_NAME_ACCEPTING = "Spitz";
     private static final String LAST_NAME_ACCEPTING = "Pomeranian";
     private static final String ACCOUNT_NUMBER_SENDER = UuidGenerator.generateUuid();
     private static final String ACCOUNT_NUMBER_ACCEPTING = UuidGenerator.generateUuid();
@@ -29,8 +30,7 @@ public class SymbolsInsteadNumbersTest extends BaseWebTest {
     private static final String EMAIL_ACCEPTING = "spitz@mail.com";
     private final LoginPage loginPage = new LoginPage();
     private final TransferTransactionPage transferTransactionPage = new TransferTransactionPage();
-    private static final String TRANSFER_AMOUNT = "+";
-    private static final String TRANSFER_AMOUNT_ERROR_MESSAGE = "Please enter a number.";
+    private static final String TRANSFER_AMOUNT = "0";
     private final LoginRequestProvider loginRequestProvider = new LoginRequestProvider();
     private final PuppyRequestProvider puppyRequestProvider = new PuppyRequestProvider();
     private static final String COOKIE_NAME = "sessionid";
@@ -57,15 +57,14 @@ public class SymbolsInsteadNumbersTest extends BaseWebTest {
     }
 
     @Test
-    public void symbolsInsteadNumbersTest() {
+    public void zeroTransferAmountTest() {
         transferTransactionPage
                 .enterTransferAmount(TRANSFER_AMOUNT)
                 .selectFromJackRussellOption()
                 .selectToSpitzPomeranianOption()
                 .clickConfirm()
                 .checkTransferTransactionTitleIsDisplayed()
-                .checkErrorMessageTransferAmountFieldExist()
-                .checkErrorMessageInTransferAmountFieldIsCorrect(TRANSFER_AMOUNT_ERROR_MESSAGE);
+                .checkErrorCreateZero();
     }
 
     @AfterEach
@@ -76,5 +75,4 @@ public class SymbolsInsteadNumbersTest extends BaseWebTest {
         RestUtils.post(puppyRequestProvider.deletePuppyAccount(ID_SENDER, cookie));
         RestUtils.post(puppyRequestProvider.deletePuppyAccount(ID_ACCEPTING, cookie));
     }
-
 }

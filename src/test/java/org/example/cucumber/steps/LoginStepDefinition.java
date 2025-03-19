@@ -5,7 +5,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.pages.DashboardPage;
 import org.example.pages.LoginPage;
-import org.junit.jupiter.api.Assertions;
 
 public class LoginStepDefinition {
     private final LoginPage loginPage = new LoginPage();

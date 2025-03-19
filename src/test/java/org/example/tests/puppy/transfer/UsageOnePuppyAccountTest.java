@@ -1,4 +1,4 @@
-package org.example.puppy.transfer;
+package org.example.tests.puppy.transfer;
 
 import io.restassured.http.Cookie;
 import io.restassured.response.ValidatableResponse;
@@ -6,10 +6,9 @@ import org.example.helpers.TestDataHelper;
 import org.example.models.db.Puppy;
 import org.example.pages.LoginPage;
 import org.example.pages.TransferTransactionPage;
-import org.example.puppy.base.BaseWebTest;
+import org.example.tests.puppy.base.BaseWebTest;
 import org.example.repository.PuppyRepository;
 import org.example.utils.RestUtils;
-import org.example.utils.UuidGenerator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
