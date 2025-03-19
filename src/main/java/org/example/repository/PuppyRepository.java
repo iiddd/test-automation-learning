@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PuppyRepository {
 
@@ -29,7 +30,7 @@ public class PuppyRepository {
                     admin.setLastName(resultSet.getString("last_name"));
                     admin.setUsername(resultSet.getString("username"));
                     admin.setPassword(resultSet.getString("password"));
-                    admin.setEmailAddress(resultSet.getString("email"));
+                    admin.setEmail(resultSet.getString("email"));
                     admin.setLastLogin(resultSet.getString("last_login"));
                     admin.setDateJoined(resultSet.getString("date_joined"));
                     admin.setIsSuperUser(resultSet.getBoolean("is_superuser"));
@@ -81,6 +82,13 @@ public class PuppyRepository {
         return puppyList.getFirst().getAccountBalance();
     }
 
+    public static int getAdminId(String username) {
+        List<Admin> adminList = getAdmins().stream().filter(
+                adminAccount -> Objects.equals(adminAccount.getUsername(), username)).toList();
+        Assertions.assertTrue(adminList.size() == 1);
+        return adminList.getFirst().getId();
+    }
+
     public static void executeSqlCommand(String sql) {
         try (Connection connection = connect(getDbUrl());
              Statement statement = connection.createStatement()) {
@@ -128,6 +136,34 @@ public class PuppyRepository {
 
             namedStatement.executeUpdate();
             System.out.println("Puppy created successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void createAdmin(Admin admin) {
+        String SqlQuery = "INSERT INTO auth_user (id, password, last_login, is_superuser, "
+                + "username, last_name, email, is_staff, is_active, date_joined, first_name) "
+                + "VALUES (:id, :password, :last_login, :is_superuser, :username, :last_name, "
+                + ":email, :is_staff, :is_active, :date_joined, :first_name)";
+
+        try (Connection connection = connect(getDbUrl());
+             NamedParameterStatement namedStatement = new NamedParameterStatement(connection, SqlQuery)) {
+
+            namedStatement.setParameter("id", admin.getId());
+            namedStatement.setParameter("password", admin.getPassword());
+            namedStatement.setParameter("last_login", admin.getLastLogin());
+            namedStatement.setParameter("is_superuser", admin.getIsSuperUser());
+            namedStatement.setParameter("username", admin.getUsername());
+            namedStatement.setParameter("last_name", admin.getLastName());
+            namedStatement.setParameter("email", admin.getEmail());
+            namedStatement.setParameter("is_staff", admin.getIsStaff());
+            namedStatement.setParameter("is_active", admin.getIsActive());
+            namedStatement.setParameter("date_joined", admin.getDateJoined());
+            namedStatement.setParameter("first_name", admin.getFirstName());
+
+            namedStatement.executeUpdate();
+            System.out.println("Admin created successfully.");
         } catch (Exception e) {
             e.printStackTrace();
         }

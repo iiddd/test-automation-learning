@@ -1,5 +1,6 @@
 package org.example.helpers;
 
+import org.example.models.db.Admin;
 import org.example.models.db.Puppy;
 import org.example.utils.UuidGenerator;
 
@@ -17,6 +18,22 @@ public class TestDataHelper {
         puppy.setAccountBalance(1);
         puppy.setCreatedById(1);
         return puppy;
+    }
+
+    public static Admin createDummyAdmin() {
+        Admin admin = new Admin();
+        admin.setId(2);
+        admin.setPassword("1234DummyPuppy4321");
+        admin.setLastLogin("");
+        admin.setIsSuperUser(false);
+        admin.setUsername("NewAdmin");
+        admin.setLastName("");
+        admin.setEmail("newadmin@mail.com");
+        admin.setIsStaff(false);
+        admin.setIsActive(true);
+        admin.setDateJoined("2024-04-20 11:24:47.271073");
+        admin.setFirstName("");
+        return admin;
     }
 
     public static Puppy createPuppyForDeposit() {
