@@ -1,8 +1,8 @@
-package org.example.puppy.transfer;
+package org.example.tests.puppy.transfer;
 
 import org.example.pages.LoginPage;
 import org.example.pages.TransferTransactionPage;
-import org.example.puppy.base.BaseWebTest;
+import org.example.tests.puppy.base.BaseWebTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

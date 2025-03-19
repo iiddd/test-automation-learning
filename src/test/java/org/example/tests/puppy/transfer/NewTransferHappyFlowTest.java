@@ -1,11 +1,11 @@
-package org.example.puppy.transfer;
+package org.example.tests.puppy.transfer;
 
 import io.restassured.http.Cookie;
 import io.restassured.response.ValidatableResponse;
 import org.example.helpers.TestDataHelper;
 import org.example.models.db.Puppy;
 import org.example.pages.*;
-import org.example.puppy.base.BaseWebTest;
+import org.example.tests.puppy.base.BaseWebTest;
 import org.example.repository.PuppyRepository;
 import org.example.utils.RestUtils;
 import org.example.utils.UuidGenerator;
