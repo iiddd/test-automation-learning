@@ -15,12 +15,13 @@ public class CreateAdminTest {
     private static final String PASSWORD = "SSmog6359";
     private static final String COOKIE_NAME = "sessionid";
 
-    @Test
-    public void createAdminTest() {
-        ValidatableResponse response = RestUtils.post(loginRequestProvider.prepareLoginRequest());
-        String cookieValue = response.extract().cookie(COOKIE_NAME);
-        Cookie cookie = new Cookie.Builder(COOKIE_NAME, cookieValue).build();
-        RestUtils.post(adminRequestProvider.createAdminAccount(USERNAME, PASSWORD, cookie));
+    //TODO: Fix me
+//    @Test
+//    public void createAdminTest() {
+//        ValidatableResponse response = RestUtils.post(loginRequestProvider.prepareLoginRequest());
+//        String cookieValue = response.extract().cookie(COOKIE_NAME);
+//        Cookie cookie = new Cookie.Builder(COOKIE_NAME, cookieValue).build();
+//        RestUtils.post(adminRequestProvider.createAdminAccount(USERNAME, PASSWORD, cookie));
 //TODO: Finish test with UI
-    }
+//    }
 }

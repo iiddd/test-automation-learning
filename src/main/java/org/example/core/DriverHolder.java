@@ -15,6 +15,7 @@ public class DriverHolder {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions()
                 .addArguments("--disable-search-engine-choice-screen")
+                .addArguments("--headless")
                 .addArguments("--lang=en-GB");
 
         driverThreadLocal.set(new ChromeDriver(options));
