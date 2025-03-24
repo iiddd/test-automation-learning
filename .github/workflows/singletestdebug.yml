@@ -1,0 +1,43 @@
+name: Run Single test
+
+on:
+  workflow_dispatch:
+    inputs:
+      testName:
+        description: 'Test class name'
+        required: true
+        default: 'EmptyLoginTest'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 22
+        uses: actions/setup-java@v4
+        with:
+          java-version: '22'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Install Google Chrome
+        run: |
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install -y ./google-chrome-stable_current_amd64.deb
+
+      - name: Run docker-compose
+        uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: ".docker/docker-compose.yaml"
+
+      - name: Wait for services to be ready
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '20s'
+
+      - name: Build and Run Tests with Maven
+        run: mvn clean verify -Dtest=${{ github.event.inputs.testName }}
