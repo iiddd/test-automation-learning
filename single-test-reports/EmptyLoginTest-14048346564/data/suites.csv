@@ -1,2 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","2105","emptyLoginTest()","","Mon Mar 24 23:54:36 UTC 2025","passed","Mon Mar 24 23:54:38 UTC 2025","","org.example.tests.puppy.login.EmptyLoginTest","org.example.tests.puppy.login.EmptyLoginTest","emptyLoginTest"
