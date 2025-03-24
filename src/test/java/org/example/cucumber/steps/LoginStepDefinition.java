@@ -30,8 +30,23 @@ public class LoginStepDefinition {
         loginPage.clickLoginButton();
     }
 
+    @When("The User enters a random {int} character text as username")
+    public void theUserInputsRandomTextAsAUsername(int input) {
+        loginPage.enterRandomUsername(input);
+    }
+
+    @When("The User enters a random {int} character text as password")
+    public void theUserEntersARandomCharacterTextAsPassword(int input) {
+        loginPage.enterRandomPassword(input);
+    }
+
     @Then("The User is on Dashboard page")
     public void theUserIsOnDashboardPage() {
         dashboardPage.checkDashboardIsDisplayed();
+    }
+
+    @Then("The User sees the error message 'Please enter a correct username and password. Note that both fields may be case-sensitive'.")
+    public void theUserSeesTheErrorMessage() {
+        loginPage.checkErrorMessageIsDisplayed();
     }
 }
