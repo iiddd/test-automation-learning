@@ -31,9 +31,17 @@
         const res = await fetch(`${basePath}`);
         const html = await res.text();
 
-        const matches = Array.from(html.matchAll(/href=\"([^\"?/]+)\//g));
-        const folders = matches.map(m => m[1])
-          .filter(name => name && !name.startsWith('.') && !name.endsWith('.html'));
+        const matches = Array.from(html.matchAll(/href=\"([^\"]+\/)">/g));
+        const folders = matches
+          .map(m => m[1])
+          .filter(name =>
+            name &&
+            !name.includes(':') &&
+            !name.endsWith('.html') &&
+            !name.startsWith('.') &&
+            name.endsWith('/')
+          )
+          .map(name => name.replace('/', ''));
 
         const count = folders.length;
         titleEl.innerText += ` (${count} available)`;
