@@ -59,6 +59,11 @@ jobs:
           name: allure-report
           path: allure-report
 
+      - name: Verify downloaded report content
+        run: |
+          echo "Contents of allure-report after download:"
+          ls -R allure-report
+
       - name: Deploy Full Allure report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -66,6 +71,7 @@ jobs:
           publish_branch: gh-pages
           publish_dir: ./allure-report
           destination_dir: all-reports/run-${{ github.run_id }}
+          keep_files: true
 
       - name: Deploy enhanced static index.html to GitHub Pages root
         run: |
@@ -150,3 +156,4 @@ jobs:
           publish_branch: gh-pages
           publish_dir: ./site-root
           destination_dir: .
+          keep_files: true
