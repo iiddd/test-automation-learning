@@ -59,10 +59,6 @@ jobs:
           name: allure-report
           path: allure-report
 
-      - name: Clone existing gh-pages content
-        run: |
-          git clone --depth 1 --branch gh-pages https://github.com/${{ github.repository }} gh-pages-content
-
       - name: Deploy Full Allure report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -71,7 +67,7 @@ jobs:
           publish_dir: ./allure-report
           destination_dir: all-reports/run-${{ github.run_id }}
 
-      - name: Generate dynamic index.html
+      - name: Deploy static index.html to GitHub Pages root
         run: |
           mkdir -p site-root
           cat > site-root/index.html <<'EOF'
@@ -81,43 +77,51 @@ jobs:
             <meta charset="UTF-8" />
             <title>Allure Reports Dashboard</title>
             <style>
-              body { font-family: "Segoe UI", sans-serif; background: #f4f6f8; color: #333; margin: 0; padding: 2rem; }
-              .container { max-width: 800px; margin: auto; }
-              h1 { font-size: 2rem; color: #2c3e50; }
+              body { font-family: sans-serif; padding: 2rem; background: #f9f9f9; }
+              h1 { font-size: 2rem; margin-bottom: 1rem; }
               h2 { margin-top: 2rem; }
-              ul { list-style: none; padding-left: 0; }
+              ul { list-style: none; padding: 0; }
               li { margin: 0.5rem 0; }
-              a { color: #007acc; text-decoration: none; }
-              a:hover { color: #005a99; }
-              .tag { background: #e3f2fd; color: #0d47a1; font-size: 0.8rem; padding: 0.2rem 0.5rem; border-radius: 4px; margin-left: 0.5rem; }
-              .footer { margin-top: 3rem; font-size: 0.9rem; color: #888; }
+              a { color: #0366d6; text-decoration: none; }
+              .tag { font-size: 0.8rem; background: #eee; padding: 0.2rem 0.4rem; border-radius: 4px; margin-left: 0.5rem; }
+              .footer { margin-top: 2rem; color: #777; font-size: 0.9rem; }
             </style>
           </head>
-          <body><div class="container">
+          <body>
             <h1>🧪 Allure Reports Dashboard</h1>
-            <h2>📘 Full Test Suite Reports</h2><ul>
-          EOF
-
-          if [ -d gh-pages-content/all-reports ]; then
-            for d in gh-pages-content/all-reports/run-*; do
-              [ -d "$d" ] || continue
-              name=$(basename "$d")
-              echo "<li><a href=\"all-reports/$name/index.html\" target=\"_blank\">$name</a> <span class=\"tag\">$name</span></li>" >> site-root/index.html
-            done
-          fi
-
-          echo "</ul><h2>🎯 Single Test Reports</h2><ul>" >> site-root/index.html
-
-          if [ -d gh-pages-content/single-test-reports ]; then
-            for d in gh-pages-content/single-test-reports/*; do
-              [ -d "$d" ] || continue
-              name=$(basename "$d")
-              echo "<li><a href=\"single-test-reports/$name/index.html\" target=\"_blank\">$name</a> <span class=\"tag\">$name</span></li>" >> site-root/index.html
-            done
-          fi
-
-          cat >> site-root/index.html <<'EOF'
-            </ul><div class="footer">Deployed with ❤️ by GitHub Actions</div></div></body></html>
+            <h2>📘 Full Test Suite Reports</h2>
+            <ul id="full-reports">Loading...</ul>
+            <h2>🎯 Single Test Reports</h2>
+            <ul id="single-reports">Loading...</ul>
+            <div class="footer">Auto-generated with ❤️ using GitHub Pages + JS</div>
+            <script>
+              async function loadReports(basePath, targetId) {
+                const listEl = document.getElementById(targetId);
+                try {
+                  const res = await fetch(`${basePath}`);
+                  const html = await res.text();
+                  const matches = Array.from(html.matchAll(/href=\"([^\"]+)\//g));
+                  const folders = [...new Set(matches.map(m => m[1]))].filter(n => n.startsWith('run-') || !n.includes('.'));
+                  if (folders.length === 0) {
+                    listEl.innerHTML = '<li>No reports found.</li>';
+                    return;
+                  }
+                  listEl.innerHTML = '';
+                  folders.forEach(name => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="${basePath}${name}/index.html" target="_blank">${name}</a> <span class="tag">${name}</span>`;
+                    listEl.appendChild(li);
+                  });
+                } catch (e) {
+                  listEl.innerHTML = '<li>Error loading reports</li>';
+                  console.error(e);
+                }
+              }
+              loadReports('all-reports/', 'full-reports');
+              loadReports('single-test-reports/', 'single-reports');
+            </script>
+          </body>
+          </html>
           EOF
 
       - name: Deploy index.html to GitHub Pages root
