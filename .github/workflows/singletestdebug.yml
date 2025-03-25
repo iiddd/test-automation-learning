@@ -1,10 +1,15 @@
-name: Run Full Test Suite and Publish Allure Report
+name: Run Single Test and Publish Allure Report
 
 on:
   workflow_dispatch:
+    inputs:
+      testName:
+        description: 'Test class name'
+        required: true
+        default: 'EmptyLoginTest'
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,8 +38,8 @@ jobs:
         with:
           time: '20s'
 
-      - name: Run All Tests
-        run: mvn clean test
+      - name: Run Selected Test
+        run: mvn clean verify -Dtest=${{ github.event.inputs.testName }}
 
       - name: Generate Allure Report
         run: mvn allure:report
@@ -46,7 +51,7 @@ jobs:
           path: target/allure-report
 
   deploy:
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -59,13 +64,13 @@ jobs:
           name: allure-report
           path: allure-report
 
-      - name: Deploy Full Allure report to GitHub Pages
+      - name: Deploy Single Test Allure Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./allure-report
-          destination_dir: all-reports/run-${{ github.run_id }}
+          destination_dir: single-test-reports/${{ github.event.inputs.testName }}-${{ github.run_id }}
 
       - name: Deploy enhanced static index.html to GitHub Pages root
         run: |
