@@ -59,8 +59,9 @@ jobs:
           name: allure-report
           path: allure-report
 
-      - name: Check contents of allure-report
-        run: ls -R allure-report
+      - name: Clone existing gh-pages content
+        run: |
+          git clone --depth 1 --branch gh-pages https://github.com/${{ github.repository }} gh-pages-content
 
       - name: Deploy Full Allure report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -97,14 +98,16 @@ jobs:
             <h2>📘 Full Test Suite Reports</h2><ul>
           EOF
 
-          for d in all-reports/run-*; do
-            echo "<li><a href=\"$d/index.html\" target=\"_blank\">$d</a> <span class=\"tag\">$d</span></li>" >> site-root/index.html
+          for d in gh-pages-content/all-reports/run-*; do
+            name=$(basename "$d")
+            echo "<li><a href=\"all-reports/$name/index.html\" target=\"_blank\">$name</a> <span class=\"tag\">$name</span></li>" >> site-root/index.html
           done
 
           echo "</ul><h2>🎯 Single Test Reports</h2><ul>" >> site-root/index.html
 
-          for d in single-test-reports/*; do
-            echo "<li><a href=\"$d/index.html\" target=\"_blank\">$d</a> <span class=\"tag\">$d</span></li>" >> site-root/index.html
+          for d in gh-pages-content/single-test-reports/*; do
+            name=$(basename "$d")
+            echo "<li><a href=\"single-test-reports/$name/index.html\" target=\"_blank\">$name</a> <span class=\"tag\">$name</span></li>" >> site-root/index.html
           done
 
           cat >> site-root/index.html <<'EOF'
