@@ -16,23 +16,33 @@
 </head>
 <body>
   <h1>🧪 Allure Reports Dashboard</h1>
-  <h2>📘 Full Test Suite Reports</h2>
+  <h2 id="full-title">📘 Full Test Suite Reports</h2>
   <ul id="full-reports">Loading...</ul>
-  <h2>🎯 Single Test Reports</h2>
+  <h2 id="single-title">🎯 Single Test Reports</h2>
   <ul id="single-reports">Loading...</ul>
   <div class="footer">Auto-generated with ❤️ using GitHub Pages + JS</div>
   <script>
-    async function loadReports(basePath, targetId) {
+    async function loadReports(basePath, targetId, titleId) {
       const listEl = document.getElementById(targetId);
+      const titleEl = document.getElementById(titleId);
+      listEl.innerHTML = "<li>Loading...</li>";
+
       try {
         const res = await fetch(`${basePath}`);
         const html = await res.text();
-        const matches = Array.from(html.matchAll(/href=\"([^\"]+)\//g));
-        const folders = [...new Set(matches.map(m => m[1]))].filter(n => n.startsWith('run-') || !n.includes('.'));
-        if (folders.length === 0) {
-          listEl.innerHTML = '<li>No reports found.</li>';
+
+        const matches = Array.from(html.matchAll(/href=\"([^\"?/]+)\//g));
+        const folders = matches.map(m => m[1])
+          .filter(name => name && !name.startsWith('.') && !name.endsWith('.html'));
+
+        const count = folders.length;
+        titleEl.innerText += ` (${count} available)`;
+
+        if (count === 0) {
+          listEl.innerHTML = '<li><em>No reports found.</em></li>';
           return;
         }
+
         listEl.innerHTML = '';
         folders.forEach(name => {
           const li = document.createElement('li');
@@ -40,12 +50,13 @@
           listEl.appendChild(li);
         });
       } catch (e) {
-        listEl.innerHTML = '<li>Error loading reports</li>';
+        listEl.innerHTML = '<li><em>Error loading reports.</em></li>';
         console.error(e);
       }
     }
-    loadReports('all-reports/', 'full-reports');
-    loadReports('single-test-reports/', 'single-reports');
+
+    loadReports('all-reports/', 'full-reports', 'full-title');
+    loadReports('single-test-reports/', 'single-reports', 'single-title');
   </script>
 </body>
 </html>
