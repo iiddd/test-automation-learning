@@ -103,17 +103,23 @@ jobs:
             <h2>📘 Full Test Suite Reports</h2><ul>
           EOF
 
-          for d in gh-pages-content/all-reports/run-*; do
-            name=$(basename "$d")
-            echo "<li><a href=\"all-reports/$name/index.html\" target=\"_blank\">$name</a> <span class=\"tag\">$name</span></li>" >> site-root/index.html
-          done
+          if [ -d gh-pages-content/all-reports ]; then
+            for d in gh-pages-content/all-reports/run-*; do
+              [ -d "$d" ] || continue
+              name=$(basename "$d")
+              echo "<li><a href=\"all-reports/$name/index.html\" target=\"_blank\">$name</a> <span class=\"tag\">$name</span></li>" >> site-root/index.html
+            done
+          fi
 
           echo "</ul><h2>🎯 Single Test Reports</h2><ul>" >> site-root/index.html
 
-          for d in gh-pages-content/single-test-reports/*; do
-            name=$(basename "$d")
-            echo "<li><a href=\"single-test-reports/$name/index.html\" target=\"_blank\">$name</a> <span class=\"tag\">$name</span></li>" >> site-root/index.html
-          done
+          if [ -d gh-pages-content/single-test-reports ]; then
+            for d in gh-pages-content/single-test-reports/*; do
+              [ -d "$d" ] || continue
+              name=$(basename "$d")
+              echo "<li><a href=\"single-test-reports/$name/index.html\" target=\"_blank\">$name</a> <span class=\"tag\">$name</span></li>" >> site-root/index.html
+            done
+          fi
 
           cat >> site-root/index.html <<'EOF'
             </ul><div class="footer">Deployed with ❤️ by GitHub Actions</div></div></body></html>
