@@ -3,6 +3,10 @@ package org.example.pages;
 import org.example.utils.StringUtils;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static org.example.core.DriverHolder.getDriver;
 
@@ -17,6 +21,8 @@ public class NewWithdrawPage extends BasePage {
     private static final By TOO_MUCH_AMOUNT_ERROR_LOCATOR = By.xpath("//span[text()='The withdraw amount cannot be more than the account balance.']");
     private static final String VALUE_ATTRIBUTE_NAME = "value";
     private static final By PUPPY_FIELD_LOCATOR = By.xpath("//select[@id='id_puppy']");
+    private static final String REQUIRED_ATTRIBUTE_NAME = "required";
+    private static final String VALIDATION_MESSAGE_ATTRIBUTE_NAME = "validationMessage";
 
     public String getTransactionReference() {
         return getDriver().findElement(TRANSACTION_REFERENCE_FIELD_LOCATOR).getAttribute(VALUE_ATTRIBUTE_NAME);
@@ -48,7 +54,8 @@ public class NewWithdrawPage extends BasePage {
     }
 
     public NewWithdrawPage checkNewWithdrawPageHeaderIsDisplayed() {
-        getDriver().findElement(NEW_WITHDRAW_PAGE_HEADER_LOCATOR).isDisplayed();
+        new WebDriverWait(getDriver(), Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(NEW_WITHDRAW_PAGE_HEADER_LOCATOR));
         return this;
     }
 
@@ -78,22 +85,22 @@ public class NewWithdrawPage extends BasePage {
     }
 
     public NewWithdrawPage checkErrorEmptyWithdrawAmountFieldExist() {
-        Assertions.assertTrue(Boolean.parseBoolean(getDriver().findElement(WITHDRAW_AMOUNT_FIELD_LOCATOR).getAttribute("required")));
+        Assertions.assertTrue(Boolean.parseBoolean(getDriver().findElement(WITHDRAW_AMOUNT_FIELD_LOCATOR).getAttribute(REQUIRED_ATTRIBUTE_NAME)));
         return this;
     }
 
     public NewWithdrawPage checkErrorMessageInWithdrawAmountFieldIsCorrect(String expectedMessage) {
-        Assertions.assertEquals(expectedMessage, getDriver().findElement(WITHDRAW_AMOUNT_FIELD_LOCATOR).getAttribute("validationMessage"));
+        Assertions.assertEquals(expectedMessage, getDriver().findElement(WITHDRAW_AMOUNT_FIELD_LOCATOR).getAttribute(VALIDATION_MESSAGE_ATTRIBUTE_NAME));
         return this;
     }
 
     public NewWithdrawPage checkErrorEmptyPuppyFieldExist() {
-        Assertions.assertTrue(Boolean.parseBoolean(getDriver().findElement(PUPPY_FIELD_LOCATOR).getAttribute("required")));
+        Assertions.assertTrue(Boolean.parseBoolean(getDriver().findElement(PUPPY_FIELD_LOCATOR).getAttribute(REQUIRED_ATTRIBUTE_NAME)));
         return this;
     }
 
     public NewWithdrawPage checkErrorMessageInPuppyFieldIsCorrect(String expectedMessage) {
-        Assertions.assertEquals(expectedMessage, getDriver().findElement(PUPPY_FIELD_LOCATOR).getAttribute("validationMessage"));
+        Assertions.assertEquals(expectedMessage, getDriver().findElement(PUPPY_FIELD_LOCATOR).getAttribute(VALIDATION_MESSAGE_ATTRIBUTE_NAME));
         return this;
     }
 }

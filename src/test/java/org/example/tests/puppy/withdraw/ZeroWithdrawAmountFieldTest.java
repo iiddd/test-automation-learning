@@ -36,15 +36,15 @@ public class ZeroWithdrawAmountFieldTest extends BaseWebTest {
     }
 
     //TODO: Fix me
-//    @Test
-//    public void zeroWithdrawAmountFieldTest() {
-//        newWithdrawPage
-//                .enterWithdrawAmount(WITHDRAW_AMOUNT)
-//                .selectPuppyOption()
-//                .clickConfirmButton()
-//                .checkNewWithdrawPageHeaderIsDisplayed()
-//                .checkZeroWithdrawAmountErrorIsDisplayed();
-//    }
+    @Test
+    public void zeroWithdrawAmountFieldTest() {
+        newWithdrawPage
+                .enterWithdrawAmount(WITHDRAW_AMOUNT)
+                .selectPuppyOption()
+                .clickConfirmButton()
+                .checkNewWithdrawPageHeaderIsDisplayed()
+                .checkZeroWithdrawAmountErrorIsDisplayed();
+    }
 
     @AfterEach
     public void postCondition() {
