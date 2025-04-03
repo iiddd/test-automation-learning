@@ -1,6 +1,10 @@
 package org.example.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static org.example.core.DriverHolder.getDriver;
 
@@ -29,8 +33,10 @@ public class BasePage {
         return this;
     }
 
+
     public BasePage clickWithdrawDropdown() {
-        getDriver().findElement(WITHDRAW_DROPDOWN_LOCATOR).click();
+        new WebDriverWait(getDriver(), Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(WITHDRAW_DROPDOWN_LOCATOR)).click();
         return this;
     }
 
@@ -40,7 +46,8 @@ public class BasePage {
     }
 
     public BasePage clickDepositDropdown() {
-        getDriver().findElement(DEPOSIT_DROPDOWN_LOCATOR).click();
+        new WebDriverWait(getDriver(), Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(DEPOSIT_DROPDOWN_LOCATOR)).click();
         return this;
     }
 
@@ -50,7 +57,8 @@ public class BasePage {
     }
 
     public BasePage clickPuppyAccountsDropdown() {
-        getDriver().findElement(PUPPY_ACCOUNTS_DROPDOWN_LOCATOR).click();
+        new WebDriverWait(getDriver(), Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(PUPPY_ACCOUNTS_DROPDOWN_LOCATOR)).click();
         return this;
     }
 

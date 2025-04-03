@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import requstprovider.LoginRequestProvider;
 import requstprovider.PuppyRequestProvider;
 
-public class SymbolsInsteadNumbersTest extends BaseWebTest {
+public class SymbolsInsteadNumbersWithdrawTest extends BaseWebTest {
     private static final int ID = 1;
     private final LoginPage loginPage = new LoginPage();
     private final NewWithdrawPage newWithdrawPage = new NewWithdrawPage();
@@ -37,16 +37,16 @@ public class SymbolsInsteadNumbersTest extends BaseWebTest {
     }
 
     //TODO: Doesn't work on CI
-//    @Test
-//    public void symbolsInsteadNumbersTest() {
-//        newWithdrawPage
-//                .enterWithdrawAmount(WITHDRAW_AMOUNT)
-//                .selectPuppyOption()
-//                .clickConfirmButton()
-//                .checkNewWithdrawPageHeaderIsDisplayed()
-//                .checkErrorEmptyWithdrawAmountFieldExist()
-//                .checkErrorMessageInWithdrawAmountFieldIsCorrect(SYMBOLS_IN_WITHDRAW_AMOUNT_FIELD_MESSAGE);
-//    }
+    @Test
+    public void symbolsInsteadNumbersTest() {
+        newWithdrawPage
+                .enterWithdrawAmount(WITHDRAW_AMOUNT)
+                .selectPuppyOption()
+                .clickConfirmButton()
+                .checkNewWithdrawPageHeaderIsDisplayed()
+                .checkErrorEmptyWithdrawAmountFieldExist()
+                .checkErrorMessageInWithdrawAmountFieldIsCorrect(SYMBOLS_IN_WITHDRAW_AMOUNT_FIELD_MESSAGE);
+    }
 
     @AfterEach
     public void postCondition() {

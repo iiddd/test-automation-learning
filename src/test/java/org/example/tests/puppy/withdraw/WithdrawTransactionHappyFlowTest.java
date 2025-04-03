@@ -39,17 +39,17 @@ public class WithdrawTransactionHappyFlowTest extends BaseWebTest {
     }
 
     //TODO: Doesn't work on CI
-//    @Test
-//    public void withdrawTransactionHappyFlowTest() {
-//        TRANSACTION_ID = newWithdrawPage.getTransactionReference();
-//        newWithdrawPage
-//                .enterWithdrawAmount(WITHDRAW_AMOUNT)
-//                .selectPuppyOption()
-//                .clickConfirmButton();
-//        withdrawTransactionListPage
-//                .checkWithdrawTransactionListIsDisplayed()
-//                .checkTransactionListContainsTransaction(TRANSACTION_ID);
-//    }
+    @Test
+    public void withdrawTransactionHappyFlowTest() {
+        TRANSACTION_ID = newWithdrawPage.getTransactionReference();
+        newWithdrawPage
+                .enterWithdrawAmount(WITHDRAW_AMOUNT)
+                .selectPuppyOption()
+                .clickConfirmButton();
+        withdrawTransactionListPage
+                .checkWithdrawTransactionListIsDisplayed()
+                .checkTransactionListContainsTransaction(TRANSACTION_ID);
+    }
 
     @AfterEach
     public void postCondition() {

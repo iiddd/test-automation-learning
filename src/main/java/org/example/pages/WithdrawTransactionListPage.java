@@ -4,7 +4,10 @@ import org.example.models.WithdrawTransaction;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -43,7 +46,8 @@ public class WithdrawTransactionListPage extends BasePage {
     }
 
     public WithdrawTransactionListPage checkWithdrawTransactionListIsDisplayed() {
-        Assertions.assertTrue(getDriver().findElement(WITHDRAW_TRANSACTION_LIST_HEADER_LOCATOR).isDisplayed());
+        new WebDriverWait(getDriver(), Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(WITHDRAW_TRANSACTION_LIST_HEADER_LOCATOR));
         return this;
     }
 
